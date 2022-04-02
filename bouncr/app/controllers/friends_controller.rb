@@ -9,7 +9,7 @@ class FriendsController < ApplicationController
     render json: @friends
   end
 
-  def index_for_user
+  def user_friends
     @friends = Friend.by_user(params[:id])
     render json: FriendSerializer.new(@friends,{})
   end

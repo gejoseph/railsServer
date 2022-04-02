@@ -18,13 +18,13 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def index_for_hosting
+  def event_hosts
     @users = User.for_hosting(params[:id])
     render json: UserSerializer.new(@users,{})
   end
 
-  def index_for_invited
-    @users = User.for_invited(params[:id])
+  def event_guests
+    @users = User.for_invited(params[:id], params[:checkedIn])
     render json: UserSerializer.new(@users,{})
   end
 

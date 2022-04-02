@@ -10,9 +10,9 @@ class InvitesController < ApplicationController
   end
 
   # GET /events_for_guest
-  def index_for_guest
+  def guest_invites
     @invites = Invite.by_user(params[:id])
-    options = {include: [:event]}
+    options = {}
     render json: InviteSerializer.new(@invites,options)
   end
 

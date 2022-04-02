@@ -7,13 +7,13 @@ class EventsController < ApplicationController
     render json: @events
   end
 
-  def index_for_host
+  def host_events
     @events = Event.forHost(params[:id]).alphabetical
     options = {}
     render json: EventSerializer.new(@events,options)
   end
 
-  def index_for_guest
+  def guest_events
     @events = Event.forGuest(params[:id]).alphabetical
     options = {}
     render json: EventSerializer.new(@events,options)

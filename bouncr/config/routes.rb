@@ -18,14 +18,12 @@ Rails.application.routes.draw do
   #given userID, get all events user is invited to
   get "/guest_events", to: "event#guest_events"
 
-  #given userID, get all freind model that has user as initiating user or recieving user
+  #given userID, get all friend model that has user as initiating user or recieving user
   get "/user_friends", to: "friends#user_friends"
-
 
   post "/login", to: "users#login"
 
-
-  #given eventID and invitation status(bool), get all invited users of that invite status
+  #given eventID and checkedIn status(bool), get all invited users of that invite status. params are id and checkedIn
   get "/event_guests", to: 'users#event_guests'
 
   #given eventID, get all users hosting the event
