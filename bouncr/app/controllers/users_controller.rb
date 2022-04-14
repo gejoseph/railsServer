@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def event_guests
-    @users = User.for_invited(params[:id], params[:checkedIn])
+    @users = User.for_invited(params[:id], params[:inviteStatus])
     render json: UserSerializer.new(@users,{})
   end
 

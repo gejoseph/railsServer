@@ -13,7 +13,7 @@ class User < ApplicationRecord
     scope :alphabetical, -> { order('username') }
     scope :search, -> (term){where('username LIKE ?', term)}
     scope :for_hosting, ->(event_id) {joins(:hosts).where('hosts.event_id = ?',event_id)}
-    scope :for_invited, ->(event_id, checkedIn) {joins(:invites).where('invites.event_id = ? AND invites.checkinStatus',checkedIn)}
+    scope :for_invited, ->(event_id, inviteStatus) {joins(:invites).where('invites.event_id = ? AND invites.inviteStatus',inviteStatus)}
     scope :initiatedFriendship , ->(user_id) {joins(:recievedFriendships).where('friends.user1_id = ?',user_id)}
     scope :recievedFriendship , ->(user_id) {joins(:initiatedFriendships).where('friends.user2_id = ?',user_id)}
     
