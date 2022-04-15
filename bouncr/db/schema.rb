@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.string "street1"
     t.string "street2"
     t.string "city"
+    t.string "state"
     t.integer "zip"
     t.text "description"
     t.boolean "attendenceVisible"
