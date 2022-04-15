@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ansi (1.5.0)
     apipie-rails (0.5.19)
       rails (>= 4.1)
     bcrypt (3.1.16)
@@ -97,8 +98,18 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    minitest-rails (6.1.0)
+      minitest (~> 5.10)
+      railties (~> 6.1.0)
+    minitest-reporters (1.5.0)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     msgpack (1.4.5)
     nio4r (2.5.8)
+    nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.3-x86_64-darwin)
       racc (~> 1.4)
     puma (5.6.2)
@@ -139,6 +150,7 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    ruby-progressbar (1.11.0)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -176,6 +188,8 @@ DEPENDENCIES
   hirb
   jwt
   listen (~> 3.3)
+  minitest-rails
+  minitest-reporters
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.4, >= 6.1.4.6)
