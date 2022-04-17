@@ -30,7 +30,7 @@ module Contexts
                                                 isOpenInvite: true,
                                                 venueLatitude: 40.44221987732466, 
                                                 venueLongitude: -80.00264637352394)
-            @signu_party     = FactoryBot.create(:event,
+            @signu_party    = FactoryBot.create(:event,
                                                 name: "Sigma Nu Party",
                                                 startTime: DateTime.new(2022, 01, 20, 22, 0, 0), 
                                                 endTime: DateTime.new(2022, 01, 21, 3, 0, 0),
