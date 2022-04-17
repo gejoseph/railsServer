@@ -6,6 +6,6 @@ FactoryBot.define do
         inviteStatus { true }
         checkinStatus { false }
         phoneNumber { 1231231234 }
-        coverChargePaid { 2 }
+        coverChargePaid { 2.00 }
     end
 end

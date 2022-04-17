@@ -12,10 +12,10 @@ FactoryBot.define do
         attendenceVisible { true }
         friendsAttendingVisible { false }
         attendenceCap { 20 }
-        coverCharge { 10 }
+        coverCharge { 10.00 }
         isOpenInvite { false }
-        venueLatitude { 40.44437309784734 }
-        venueLongitude { -79.94564023258341 }
+        venueLatitude { 40.44119848422531 }
+        venueLongitude { -80.00313621585269 }
     end
 end
   
