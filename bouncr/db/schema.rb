@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.string "firstName"
     t.string "lastName"
     t.integer "phoneNumber"
+    t.datetime "birthday"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
