@@ -40,14 +40,12 @@ module Contexts
                                                         user: @grace,
                                                         event: @charity_event,
                                                         checkinTime: DateTime.new(2022, 5, 1, 20, 0, 0),
-                                                        checkinStatus: true,
                                                         phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
             @profh_charity_event    = FactoryBot.create(:invite,
                                                         user: @profh,
                                                         event: @charity_event,
                                                         checkinTime: DateTime.new(2022, 5, 1, 21, 0, 12),
-                                                        checkinStatus: true,
                                                         phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
             @kenny_charity_event    = FactoryBot.create(:invite,
