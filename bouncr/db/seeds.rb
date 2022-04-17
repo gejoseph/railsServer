@@ -166,12 +166,12 @@ max     = User.create(  username: "msergent",
 
                         
 # Organizations ================================================================
-kpdc       = Organization.create(name: "KPDC", type:"Student Club")
-signu      = Organization.create(name: "Sigma Nu", type: "Fraternity")
-art_club   = Organization.create(name: "BHS Art Club", type: "Student Club")
-akdp       = Organization.create(name: "Alpha Kappa Delta Phi", type: "Sorority")
-kapsig     = Organization.create(name: "Kappa Sigma", type: "Fraternity")
-cmu        = Organization.create(name: "Carnegie Mellon University", type: "School")
+kpdc       = Organization.create(name: "KPDC", orgType:"Student Club")
+signu      = Organization.create(name: "Sigma Nu", orgType: "Fraternity")
+art_club   = Organization.create(name: "BHS Art Club", orgType: "Student Club")
+akdp       = Organization.create(name: "Alpha Kappa Delta Phi", orgType: "Sorority")
+kapsig     = Organization.create(name: "Kappa Sigma", orgType: "Fraternity")
+cmu        = Organization.create(name: "Carnegie Mellon University", orgType: "School")
 
 
 # OrganizationUsers ============================================================
