@@ -105,6 +105,7 @@ coffee_chat     = Event.create( name: "Coffee Chat with IS Profs",
                                 venueLatitude: 40.4445165337803, 
                                 venueLongitude: -79.94553821758295)
 
+
 # USERS ========================================================================
 john    = User.create(  username: "johnd",
                         email: "johnd@gmail.com",
@@ -163,12 +164,46 @@ max     = User.create(  username: "msergent",
                         password: "secret",
                         password_confirmation: "secret")
 
-# Organizations ========================================================================
+                        
+# Organizations ================================================================
+kpdc       = Organization.create(name: "KPDC", type:"Student Club")
+signu      = Organization.create(name: "Sigma Nu", type: "Fraternity")
+art_club   = Organization.create(name: "BHS Art Club", type: "Student Club")
+akdp       = Organization.create(name: "Alpha Kappa Delta Phi", type: "Sorority")
+kapsig     = Organization.create(name: "Kappa Sigma", type: "Fraternity")
+cmu        = Organization.create(name: "Carnegie Mellon University", type: "School")
+
+
+# OrganizationUsers ============================================================
+kpdc_profh     = OrganizationUser.create(organization: kpdc, user: profh, isAdmin: false)
+signu_john     = OrganizationUser.create(organization: signu, user: john, isAdmin: true)
+signu_kenny    = OrganizationUser.create(organization: signu, user: kenny, isAdmin: false)
+art_club_grace = OrganizationUser.create(organization: art_club, user: grace, isAdmin: false)
+art_club_sara  = OrganizationUser.create(organization: art_club, user: sara, isAdmin: false)
+akdp_sara      = OrganizationUser.create(organization: akdp, user: sara, isAdmin: false)
+kapsig_max     = OrganizationUser.create(organization: kapsig, user: max, isAdmin: false)
+cmu_shane      = OrganizationUser.create(organization: cmu, user: shane, isAdmin: false)
+
+
+# OrganizationEvents ===========================================================
+kpdc_dance             = OrganizationEvent.create(organization: kpdc, event: dance_party)
+artclub_artnight       = OrganizationEvent.create(organization: art_club, event: art_night)
+akdp_charity           = OrganizationEvent.create(organization: akdp, event: charity_event)
+signu_signu_party      = OrganizationEvent.create(organization: signu, event: signu_party)
+kapsig_kapsig_party    = OrganizationEvent.create(organization: kapsig, event: kapsig_party)
+cmu_coffee             = OrganizationEvent.create(organization: cmu, event: coffee_chat)
+
+
+# Friends ======================================================================
+kenny_grace    = Friend.create(user1: kenny, user2: grace, accepted: false)
+kenny_sara     = Friend.create(user1: kenny, user2: sara, accepted: false)
+grace_sara     = Friend.create(user1: grace, user2: sara, accepted: true)
+shane_kenny    = Friend.create(user1: shane, user2: kenny, accepted: true)
+shane_profh    = Friend.create(user1: shane, user2: profh, accepted: false)
+profh_max      = Friend.create(user1: profh, user2: max, accepted: true)
+john_sara      = Friend.create(user1: john, user2: sara, accepted: false)
 
 
 
-include Contexts::OrganizationUsers
-include Contexts::OrganizationEvents
-include Contexts::Friends
 include Contexts::Hosts
 include Contexts::Invites
