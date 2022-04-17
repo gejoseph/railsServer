@@ -6,18 +6,18 @@ module Contexts
             @kenny_dance_party      = FactoryBot.create(:invite,
                                                         user: @kenny,
                                                         event: @dance_party,
-                                                        checkinTime: DateTime.new(2022, 04, 15, 10, 05, 0))
+                                                        checkinTime: DateTime.new(2022, 4, 15, 10, 5, 0))
             @grace_dance_party      = FactoryBot.create(:invite,
                                                         user: @grace,
                                                         event: @dance_party,
-                                                        checkinTime: DateTime.new(2022, 04, 15, 10, 12, 0),
+                                                        checkinTime: DateTime.new(2022, 4, 15, 10, 12, 0),
                                                         coverChargePaid: 10.00)
 
             # Art Night Invites ================================================
             @shane_art_night        = FactoryBot.create(:invite,
                                                         user: @shane,
                                                         event: @art_night,
-                                                        checkinTime: DateTime.new(2022, 09, 24, 13, 05, 0),
+                                                        checkinTime: DateTime.new(2022, 9, 24, 13, 5, 0),
                                                         phoneNumber: 3213214321,
                                                         coverChargePaid: 0)
             @john_art_night         = FactoryBot.create(:invite,
@@ -31,7 +31,7 @@ module Contexts
             @max_art_night          = FactoryBot.create(:invite,
                                                         user: @max,
                                                         event: @art_night,
-                                                        checkinTime: DateTime.new(2022, 09, 24, 14, 0, 0),
+                                                        checkinTime: DateTime.new(2022, 9, 24, 14, 0, 0),
                                                         phoneNumber: 3213214321,
                                                         coverChargePaid: 0)
             
@@ -39,14 +39,14 @@ module Contexts
             @grace_charity_event    = FactoryBot.create(:invite,
                                                         user: @grace,
                                                         event: @charity_event,
-                                                        checkinTime: DateTime.new(2022, 05, 01, 20, 0, 0),
+                                                        checkinTime: DateTime.new(2022, 5, 1, 20, 0, 0),
                                                         checkinStatus: true,
                                                         phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
             @profh_charity_event    = FactoryBot.create(:invite,
                                                         user: @profh,
                                                         event: @charity_event,
-                                                        checkinTime: DateTime.new(2022, 05, 01, 21, 0, 12),
+                                                        checkinTime: DateTime.new(2022, 5, 1, 21, 0, 12),
                                                         checkinStatus: true,
                                                         phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
@@ -70,19 +70,19 @@ module Contexts
             @max_signu_party        = FactoryBot.create(:invite,
                                                         user: @max,
                                                         event: @signu_party,
-                                                        checkinTime: DateTime.new(2022, 01, 20, 22, 0, 0),
+                                                        checkinTime: DateTime.new(2022, 1, 20, 22, 0, 0),
                                                         phoneNumber: 5083211234,
                                                         coverChargePaid: 20)
             @shane_signu_party      = FactoryBot.create(:invite,
                                                         user: @shane,
                                                         event: @signu_party,
-                                                        checkinTime: DateTime.new(2022, 01, 20, 23, 36, 01),
+                                                        checkinTime: DateTime.new(2022, 1, 20, 23, 36, 1),
                                                         phoneNumber: 5083211234,
                                                         coverChargePaid: 30)
             @grace_signu_party      = FactoryBot.create(:invite,
                                                         user: @grace,
                                                         event: @signu_party,
-                                                        checkinTime: DateTime.new(2022, 01, 20, 1, 23, 45),
+                                                        checkinTime: DateTime.new(2022, 1, 20, 1, 23, 45),
                                                         phoneNumber: 5083211234,
                                                         coverChargePaid: 30)
 
@@ -115,25 +115,25 @@ module Contexts
             @profh_coffee_chat      = FactoryBot.create(:invite,
                                                         user: @profh,
                                                         event: @coffee_chat,
-                                                        checkinTime: DateTime.new(2022, 04, 07, 8, 0, 0),
+                                                        checkinTime: DateTime.new(2022, 4, 7, 8, 0, 0),
                                                         phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
             @sara_coffee_chat       = FactoryBot.create(:invite,
                                                         user: @sara,
                                                         event: @coffee_chat,
-                                                        checkinTime: DateTime.new(2022, 04, 07, 8, 12, 0),
+                                                        checkinTime: DateTime.new(2022, 4, 7, 8, 12, 0),
                                                         phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
             @kenny_coffee_chat      = FactoryBot.create(:invite,
                                                         user: @kenny,
                                                         event: @coffee_chat,
-                                                        checkinTime: DateTime.new(2022, 04, 07, 8, 31, 0),
+                                                        checkinTime: DateTime.new(2022, 4, 7, 8, 31, 0),
                                                         phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
             @grace_coffee_chat      = FactoryBot.create(:invite,
                                                         user: @grace,
                                                         event: @coffee_chat,
-                                                        checkinTime: DateTime.new(2022, 04, 07, 8, 01, 43),
+                                                        checkinTime: DateTime.new(2022, 4, 7, 8, 1, 43),
                                                         phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
         end

@@ -1,8 +1,8 @@
 FactoryBot.define do
     factory :event do
         name { "Dance Party" }
-        startTime { DateTime.new(2022, 04, 15, 10, 0, 0) }
-        endTime { DateTime.new(2022, 04, 15, 12, 30, 0) }
+        startTime { DateTime.new(2022, 4, 15, 10, 0, 0) }
+        endTime { DateTime.new(2022, 4, 15, 12, 30, 0) }
         street1 { "123 Forbes Ave" }
         street2 { nil }
         city { "Pittsburgh" }

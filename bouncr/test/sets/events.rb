@@ -5,8 +5,8 @@ module Contexts
             @dance_party    = FactoryBot.create(:event)
             @art_night      = FactoryBot.create(:event, 
                                                 name: "Art Night", 
-                                                startTime: DateTime.new(2022, 09, 24, 12, 0, 0), 
-                                                endTime: DateTime.new(2022, 09, 24, 15, 0, 0),
+                                                startTime: DateTime.new(2022, 9, 24, 12, 0, 0), 
+                                                endTime: DateTime.new(2022, 9, 24, 15, 0, 0),
                                                 street1: "46 Tappan St",
                                                 street2: "Rm 203",
                                                 city: "Brookline",

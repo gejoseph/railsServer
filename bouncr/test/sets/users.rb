@@ -9,21 +9,21 @@ module Contexts
                                         firstName: "Kenny",
                                         lastName: "Hu",
                                         phoneNumber: 1231231234,
-                                        birthday: DateTime.new(1999, 06, 07))
+                                        birthday: DateTime.new(1999, 6, 7))
             @grace  = FactoryBot.create(:user,
                                         username: "gjoseph",
                                         email: "grace@andrew.cmu.edu",
                                         firstName: "Grace",
                                         lastName: "Joseph",
                                         phoneNumber: 4121231234,
-                                        birthday: DateTime.new(2000, 04, 09))
+                                        birthday: DateTime.new(2000, 4, 9))
             @sara   = FactoryBot.create(:user,
                                         username: "ssong",
                                         email: "sara@andrew.cmu.edu",
                                         firstName: "Sara",
                                         lastName: "Song",
                                         phoneNumber: 6171231234,
-                                        birthday: DateTime.new(2001, 06, 24))
+                                        birthday: DateTime.new(2001, 6, 24))
             @shane  = FactoryBot.create(:user,
                                         username: "saung",
                                         email: "shane@andrew.cmu.edu",
@@ -37,14 +37,14 @@ module Contexts
                                         firstName: "Prof",
                                         lastName: "H",
                                         phoneNumber: 4120980987,
-                                        birthday: DateTime.new(1980, 10, 31)))
+                                        birthday: DateTime.new(1980, 10, 31))
             @max    = FactoryBot.create(:user,
                                         username: "msergent",
                                         email: "max@yahoo.com",
                                         firstName: "Max",
                                         lastName: "Sergent",
                                         phoneNumber: 5111232345,
-                                        birthday: DateTime.new(1986, 12, 02)))
+                                        birthday: DateTime.new(1986, 12, 2))
         end
 
         def destroy_users
