@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.boolean "attendenceVisible"
     t.boolean "friendsAttendingVisible"
     t.integer "attendenceCap"
-    t.integer "coverCharge"
+    t.float "coverCharge"
     t.boolean "isOpenInvite"
     t.float "venueLatitude"
     t.float "venueLongitude"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.boolean "inviteStatus"
     t.boolean "checkinStatus"
     t.integer "phoneNumber"
-    t.integer "coverChargePaid"
+    t.float "coverChargePaid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_invites_on_event_id"

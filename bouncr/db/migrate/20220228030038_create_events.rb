@@ -13,7 +13,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.boolean :attendenceVisible
       t.boolean :friendsAttendingVisible
       t.integer :attendenceCap
-      t.integer :coverCharge
+      t.float :coverCharge
       t.boolean :isOpenInvite
       t.float :venueLatitude
       t.float :venueLongitude
