@@ -8,15 +8,15 @@ Rails.application.routes.draw do
   resources :events
   resources :hosts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resource :users
+  resources :users
   # given userID, get all event user is hosting
-  get "/host_events", to: "event#host_events"
+  get "/host_events", to: "events#host_events"
 
   #given userID, get all of user's invites
   get "/guest_invites", to: "invites#guest_invites"
 
   #given userID, get all events user is invited to
-  get "/guest_events", to: "event#guest_events"
+  get "/guest_events", to: "events#guest_events"
 
   #given userID, get all friend model that has user as initiating user or recieving user
   get "/user_friends", to: "friends#user_friends"
