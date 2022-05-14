@@ -42,10 +42,10 @@ Rails.application.routes.draw do
   get "/login", to: "users#login"
 
   #given eventID and checkedIn status(bool), get all invited users of that invite status. params are id and checkedIn, return an array of otheruser
-  get "/event_guests", to: 'users#event_guests'
+  get "/event_guests/:id", to: 'users#event_guests'
 
   #given eventID, get all users hosting the event, return an array of otheruser
-  get "/event_hosts", to:'users#event_hosts'
+  get "/event_hosts/:id", to:'users#event_hosts'
 
 
   #auto login gets all user details too

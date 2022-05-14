@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
-    before_action :authorized, only: [:auto_login, :destroy,:update]
-    before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authorized, only: [:auto_login, :destroy,:update]
+  before_action :set_user, only: [:show, :update, :destroy]
 
   # REGISTER
+  # POST /users
   def create
     @user = User.create(user_params)
     if @user.valid?
@@ -14,30 +15,37 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/:id
   def show
-    render json: @user
+    render json: UserBlueprint.render(@user, view: :normal)
   end
 
+  # GET /event_hosts/:id
   def event_hosts
     @users = User.for_hosting(params[:id])
-    render json: UserSerializer.new(@users,{})
+    render json: UserBlueprint.render(@users, view: :other_user)
   end
 
+  # FIX, how to use inviteStatus?
+  # GET /event_guests/:id
   def event_guests
     @users = User.for_invited(params[:id], params[:inviteStatus])
-    render json: UserSerializer.new(@users,{})
+    render json: UserBlueprint.render(@users, view: :other_user)
   end
 
+  # GET /users_search
   def index_for_search
     @users = User.search(params[:term])
-    render json: UserSerializer.new(@users,{})
+    render json: UserBlueprint.render(@users, view: :other_user)
   end
 
+  # What is this for??? No matching route
   def index_friends
-    @users = User.initiatedFriendship(params[:id])+(User.recievedFriendship(params[:id]))
-    render json: UserSerializer.new(@users,{})
+    @users = User.initiatedFriendship(params[:id]) + (User.recievedFriendship(params[:id]))
+    render json: UserBlueprint.render(@users, view: :other_user)
   end
 
+  # PUT /users/:id
   def update
     if @user.update(user_params)
         token = encode_token({user_id: @user.id})
@@ -54,9 +62,10 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users
   def index
     @users = User.all
-    render json: @users
+    render json: UserBlueprint.render(@users, view: :normal)
   end
 
   # LOGGING IN
@@ -73,7 +82,7 @@ class UsersController < ApplicationController
 
 
   def auto_login
-    render json: UserSerializer.new(@user,{}) 
+    render json: UserBlueprint.render(@user, view: :normal)
   end
 
   private
