@@ -6,17 +6,12 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     render json: EventBlueprint.render(@events, view: :normal)
-    # @events = Event.all
-    # render json: @events
   end
 
   # GET /host_events/:id
   def host_events
     @events = Event.forHost(params[:id]).alphabetical
     render json: EventBlueprint.render(@events, view: :normal)
-    # @events = Event.forHost(params[:id]).alphabetical
-    # options = {}
-    # render json: EventSerializer.new(@events,options)
   end
 
   # Got rid of??
@@ -29,8 +24,6 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     render json: EventBlueprint.render(@event, view: :show)
-    # options = {include: [:organizations]}
-    # render json: EventSerializer.new(@event,options)
   end
 
   # POST /events
