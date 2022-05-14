@@ -6,26 +6,28 @@ class InvitesController < ApplicationController
   def index
     @invites = Invite.all
 
-    render json: @invites
+    render json: InviteBlueprint.render(@invites)
   end
 
-  # GET /events_for_guest
-  def guest_invites
-    @invites = Invite.by_user(params[:id])
-    options = {}
-    render json: InviteSerializer.new(@invites,options)
-  end
+  # # DEPRECATED???
+  # # GET /events_for_guest
+  # def guest_invites
+  #   @invites = Invite.by_user(params[:id])
+  #   options = {}
+  #   render json: InviteSerializer.new(@invites,options)
+  # end
 
-    # GET /guests_for_event
-    def index_for_event
-    @invites = Invite.by_event(params[:id])
-    options = {include: [:user]} 
-    render json: InviteSerializer.new(@invites,options)
-  end
+  # # DEPRECATED???
+  # # GET /guests_for_event
+  # def index_for_event
+  #   @invites = Invite.by_event(params[:id])
+  #   options = {include: [:user]} 
+  #   render json: InviteSerializer.new(@invites,options)
+  # end
 
   # GET /invites/1
   def show
-    render json: @invite
+    render json: InviteBlueprint.render(@invite)
   end
 
   # POST /invites
