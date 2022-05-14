@@ -11,7 +11,7 @@ class FriendsController < ApplicationController
 
   def user_friends
     @friends = Friend.by_user(params[:id])
-    render json: FriendSerializer.new(@friends,{})
+    render json: FriendBlueprint.render(@friends)
   end
 
   # GET /friends/1
