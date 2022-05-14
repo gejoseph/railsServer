@@ -51,5 +51,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'jwt'
+# Probably uninstall the 2 gems below
 gem 'fast_jsonapi'
 gem 'apipie-rails'
+
+gem 'blueprinter'

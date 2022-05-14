@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
 
+  # also for the index guest end point in the rails api, can we have params id, checkedin, inviteStatus to make it cleaner
   # given user id and target user id, send friendship
   
   # given user id and target user id, accept friendship
