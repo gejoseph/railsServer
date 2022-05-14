@@ -1,28 +1,36 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
   before_action :authorized
+
   # GET /events
   def index
     @events = Event.all
-    render json: @events
+    render json: EventBlueprint.render(@events, view: :normal)
+    # @events = Event.all
+    # render json: @events
   end
 
+  # GET /host_events/:id
   def host_events
     @events = Event.forHost(params[:id]).alphabetical
-    options = {}
-    render json: EventSerializer.new(@events,options)
+    render json: EventBlueprint.render(@events, view: :normal)
+    # @events = Event.forHost(params[:id]).alphabetical
+    # options = {}
+    # render json: EventSerializer.new(@events,options)
   end
 
-  def guest_events
-    @events = Event.forGuest(params[:id]).alphabetical
-    options = {}
-    render json: EventSerializer.new(@events,options)
-  end
+  # Got rid of??
+  # def guest_events
+  #   @events = Event.forGuest(params[:id]).alphabetical
+  #   options = {}
+  #   render json: EventSerializer.new(@events,options)
+  # end
 
   # GET /events/1
   def show
-    options = {include: [:organizations]}
-    render json: EventSerializer.new(@event,options)
+    render json: EventBlueprint.render(@event, view: :show)
+    # options = {include: [:organizations]}
+    # render json: EventSerializer.new(@event,options)
   end
 
   # POST /events
@@ -36,7 +44,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1
+  # PATCH/PUT /events/:id
   def update
     if @event.update(event_params)
       render json: @event
@@ -45,7 +53,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
+  # DELETE /events/:id
   def destroy
     @event.destroy
   end

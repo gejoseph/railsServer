@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 
   # given userID, get all event user is hosting, return an array of Event obj
-  get "/host_events", to: "events#host_events"
+  get "/host_events/:id", to: "events#host_events"
 
   #given userID, get all of user's invites, return an array of Invite obj, with Event attached
   get "/guest_invites", to: "invites#guest_invites"
