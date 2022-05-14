@@ -3,7 +3,7 @@ class EventBlueprint < Blueprinter::Base
   
   view :normal do
     fields :name, :startTime, :endTime, :street1, :street1, :street2, :city, :zip, :description, 
-          :attendenceCap, :attendenceVisible, :friendsAttendingVisible, :coverCharge, :isOpenInvite, :venueLatitude, :venueLongitude
+           :attendenceCap, :attendenceVisible, :friendsAttendingVisible, :coverCharge, :isOpenInvite, :venueLatitude, :venueLongitude
   end
 
   view :show do

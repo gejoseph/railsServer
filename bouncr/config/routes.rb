@@ -21,9 +21,9 @@ Rails.application.routes.draw do
 
   # given user id as a param and the event init values in the post body, create the event and set user as host
 
-  # given userid and eventy id, create a host relationship
+  # given userid and event id, create a host relationship
 
-  # given userid and eventy id, create a invite relationship with reasonable init values
+  # given userid and event id, create a invite relationship with reasonable init values
 
 
   # given userID, get all event user is hosting, return an array of Event obj
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   # get "/guest_events", to: "events#guest_events"
 
   #given userID, get all friends, return an array of otheruser
-  get "/user_friends", to: "friends#user_friends"
+  get "/user_friends/:id", to: "friends#user_friends"
 
   #dont change lol
   get "/login", to: "users#login"
