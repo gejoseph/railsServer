@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 
-  # FIX, how to use inviteStatus?
   # GET /event_guests/:id
   def event_guests
     @users = User.for_invited(params[:id], params[:inviteStatus])
@@ -42,6 +41,7 @@ class UsersController < ApplicationController
   # What is this for??? No matching route
   def index_friends
     @users = User.initiatedFriendship(params[:id]) + (User.recievedFriendship(params[:id]))
+    # @remaining_users = User.all - @users #dont know if we need this
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 

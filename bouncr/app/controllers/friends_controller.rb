@@ -5,7 +5,6 @@ class FriendsController < ApplicationController
   # GET /friends
   def index
     @friends = Friend.all
-
     render json: @friends
   end
 
@@ -22,9 +21,8 @@ class FriendsController < ApplicationController
   # POST /friends
   def create
     @friend = Friend.new(friend_params)
-
     if @friend.save
-      render json: @friend, status: :created, location: @friend
+      render json: # @friend, status: :created # send response status
     else
       render json: @friend.errors, status: :unprocessable_entity
     end
@@ -52,6 +50,6 @@ class FriendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friend_params
-      params.require(:friend).permit(:user1, :user2_id, :accpeted)
+      params.require(:friend).permit(:user1_id, :user2_id, :accepted)
     end
 end
