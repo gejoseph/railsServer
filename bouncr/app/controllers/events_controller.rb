@@ -31,17 +31,17 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      render json: {
-        "returnValue" : 0
-        "returnString" : "success"
-      }
-      # render json: @event, status: :created, location: @event
+      # render json: {
+      #   "returnValue" : 0
+      #   "returnString" : "success"
+      # }
+      render json: EventBlueprint.render(@event, view: :show)
     else
       render json: {
-        "returnValue" : -1
-        "returnString" : "failure"
+        returnValue: -1,
+        returnString: "failure"
       }
-      # render json: @event.errors, status: :unprocessable_entity
+      #render json: @event.errors, status: :unprocessable_entity
     end
   end
 
@@ -52,8 +52,8 @@ class EventsController < ApplicationController
       # render json: @event
     else
       render json: {
-        "returnValue" : -1
-        "returnString" : "failure"
+        returnValue: -1,
+        returnString: "failure"
       }
       # render json: @event.errors, status: :unprocessable_entity
     end
@@ -63,13 +63,13 @@ class EventsController < ApplicationController
   def destroy
     if @event.destroy
       render json: {
-        "returnValue" : 0
-        "returnString" : "success"
+        returnValue: 0,
+        returnString: "success"
       }
     else
       render json: {
-        "returnValue" : -1
-        "returnString" : "failure"
+        returnValue: -1,
+        returnString: "failure"
       }
     end
   end
