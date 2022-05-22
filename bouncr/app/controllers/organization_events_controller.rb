@@ -1,6 +1,7 @@
 class OrganizationEventsController < ApplicationController
   before_action :set_organization_event, only: [:show, :update, :destroy]
   before_action :authorized
+  wrap_parameters format: [:json]
 
   # GET /organization_events
   def index

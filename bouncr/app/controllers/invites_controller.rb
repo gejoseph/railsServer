@@ -1,6 +1,7 @@
 class InvitesController < ApplicationController
   before_action :set_invite, only: [:show, :update, :destroy]
   before_action :authorized
+  wrap_parameters format: [:json]
 
   # GET /invites
   def index

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authorized, only: [:auto_login, :destroy,:update]
   before_action :set_user, only: [:show, :update, :destroy]
+  wrap_parameters format: [:json]
 
   # REGISTER
   # POST /users
