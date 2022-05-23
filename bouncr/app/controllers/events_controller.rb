@@ -32,15 +32,19 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      # render json: {
-      #   "returnValue" : 0
-      #   "returnString" : "success"
-      # }
-      render json: EventBlueprint.render(@event, view: :show)
+      if Host.create(user: User.find(params[:id]), event: @event)
+        render json: EventBlueprint.render(@event, view: :show)
+      else
+        @event.destroy
+        render json: {
+          returnValue: -1,
+          returnString: "unable to create host, deleting event too"
+        }
+      end
     else
       render json: {
         returnValue: -1,
-        returnString: "failure"
+        returnString: "unable to create event"
       }
       #render json: @event.errors, status: :unprocessable_entity
     end

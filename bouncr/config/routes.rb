@@ -31,18 +31,17 @@ Rails.application.routes.draw do
   #given userID, get all friends requests, return an array of other users 
   get "/user_friend_requests", to: "users#index_friend_requests"
 
-
-  
+  #dont change lol
+  get "/login", to: "users#login"
 
   # given user id as a param and the event init values in the post body, create the event and set user as host
-  post "/events", to: "event#create"
+  post "/create_event_with_host", to: "event#create_with_host"
 
-  # given userid and event id, create a host relationship
-  post "/hosts", to: "host#create"
 
-  # given userid and event id, create a invite relationship with reasonable init values
-  post "/events", to: "invite#create"
 
+
+
+  
   # given userID, get all event user is hosting, return an array of Event obj
   get "/host_events", to: "events#host_events"
 
@@ -54,8 +53,7 @@ Rails.application.routes.draw do
 
 
 
-  #dont change lol
-  get "/login", to: "users#login"
+ 
 
   #given eventID and checkinStatus(bool), get all invited users of that invite status. params are id and checkinStatus, return an array of otheruser
   get "/event_guests", to: 'users#event_guests'
