@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   #given userID, get all friends requests, return an array of other users 
   get "/user_friend_requests", to: "users#index_friend_requests"
 
+
+  
+
   # given user id as a param and the event init values in the post body, create the event and set user as host
   post "/events", to: "event#create"
 
