@@ -39,10 +39,20 @@ class UsersController < ApplicationController
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 
-  # What is this for??? No matching route
+  # GET /user_friends
   def index_friends
-    @users = User.initiatedFriendship(params[:id]) + (User.recievedFriendship(params[:id]))
-    # @remaining_users = User.all - @users #dont know if we need this
+    @users = User.initiatedFriendship(params[:id],true) + (User.recievedFriendship(params[:id],true))
+    render json: UserBlueprint.render(@users, view: :other_user)
+  end
+
+  # GET /user_friends
+  def index_friend_requests
+    @users = []
+    if params[:sentByMe].to_s.downcase == "true"
+      @users = User.initiatedFriendship(params[:id],false)
+    else
+      @users = User.recievedFriendship(params[:id],false)
+    end 
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 

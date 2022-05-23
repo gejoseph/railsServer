@@ -53,7 +53,17 @@ class FriendsController < ApplicationController
 
   # DELETE /friends/1
   def destroy
-    @friend.destroy
+    if @friend.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private
