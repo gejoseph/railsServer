@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   # POST /events
-  def create
+  def create_with_host
     @event = Event.new(event_params)
 
     if @event.save

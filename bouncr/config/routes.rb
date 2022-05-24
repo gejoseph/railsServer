@@ -35,26 +35,15 @@ Rails.application.routes.draw do
   get "/login", to: "users#login"
 
   # given user id as a param and the event init values in the post body, create the event and set user as host
-  post "/create_event_with_host", to: "event#create_with_host"
+  post "/create_event_with_host", to: "events#create_with_host"
 
-
-
-
-
-  
   # given userID, get all event user is hosting, return an array of Event obj
   get "/host_events", to: "events#host_events"
 
   #given userID, get all of user's invites, return an array of Invite obj, with Event attached
   get "/guest_invites", to: "invites#guest_invites"
 
-  # #given userID, get all events user is invited to
-  # get "/guest_events", to: "events#guest_events"
-
-
-
- 
-
+  
   #given eventID and checkinStatus(bool), get all invited users of that invite status. params are id and checkinStatus, return an array of otheruser
   get "/event_guests", to: 'users#event_guests'
 

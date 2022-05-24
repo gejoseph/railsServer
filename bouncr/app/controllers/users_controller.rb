@@ -27,9 +27,24 @@ class UsersController < ApplicationController
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 
-  # GET /event_guests/:id
+  # GET /event_guests/
   def event_guests
-    @users = User.for_invited(params[:id], params[:inviteStatus])
+
+    @users = User.for_invited(params[:id], params[:invite_status])
+    if params[:checked_in].to_s.downcase == "true"
+      @users = @users.checked_in
+    else
+      @users = @users.not_checked_in
+    end
+
+    @friends = User.initiated_friendship(params[:user_id],true) + (User.recieved_friendship(params[:id],true))
+
+    if params[:is_friend].to_s.downcase == "true"
+      @users = @users & @friends
+    elsif params[:is_friend].to_s.downcase == "false"
+      @users = @users - @friends
+    end
+
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 
@@ -41,7 +56,7 @@ class UsersController < ApplicationController
 
   # GET /user_friends
   def index_friends
-    @users = User.initiatedFriendship(params[:id],true) + (User.recievedFriendship(params[:id],true))
+    @users = User.initiated_friendship(params[:id],true) + (User.recieved_friendship(params[:id],true))
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 
@@ -49,9 +64,9 @@ class UsersController < ApplicationController
   def index_friend_requests
     @users = []
     if params[:sentByMe].to_s.downcase == "true"
-      @users = User.initiatedFriendship(params[:id],false)
+      @users = User.initiated_friendship(params[:id],false)
     else
-      @users = User.recievedFriendship(params[:id],false)
+      @users = User.recieved_friendship(params[:id],false)
     end 
     render json: UserBlueprint.render(@users, view: :other_user)
   end

@@ -10,13 +10,13 @@ class InvitesController < ApplicationController
     render json: InviteBlueprint.render(@invites)
   end
 
-  # # DEPRECATED???
-  # # GET /events_for_guest
-  # def guest_invites
-  #   @invites = Invite.by_user(params[:id])
-  #   options = {}
-  #   render json: InviteSerializer.new(@invites,options)
-  # end
+
+
+  # GET /guest_invites
+  def guest_invites
+    @invites = Invite.by_user(params[:id])
+    render json: InviteBlueprint.render(@invites, view: :with_event)
+  end
 
   # # DEPRECATED???
   # # GET /guests_for_event
