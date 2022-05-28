@@ -19,24 +19,46 @@ class HostsController < ApplicationController
     @host = Host.new(host_params)
 
     if @host.save
-      render json: @host, status: :created, location: @host
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @host.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # PATCH/PUT /hosts/1
   def update
     if @host.update(host_params)
-      render json: @host
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @host.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # DELETE /hosts/1
   def destroy
-    @host.destroy
+    if @host.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private

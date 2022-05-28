@@ -24,25 +24,49 @@ class InvitesController < ApplicationController
   def create
     @invite = Invite.new(invite_params)
 
+    # Render response JSON b/c frontend doesn't need to know invite details on create
     if @invite.save
-      render json: @invite, status: :created, location: @invite
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @invite.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # PATCH/PUT /invites/1
   def update
+    # Render response JSON b/c frontend doesn't need to know invite details on update
     if @invite.update(invite_params)
-      render json: @invite
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @invite.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # DELETE /invites/1
   def destroy
-    @invite.destroy
+    if @invite.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private
