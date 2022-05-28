@@ -1,6 +1,6 @@
 FactoryBot.define do
     factory :organization do
         name { "KPDC" }
-        type { "Student Club" }
+        orgType { "Student Club" }
     end
 end

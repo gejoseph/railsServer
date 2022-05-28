@@ -3,11 +3,11 @@ module Contexts
 
         def create_organizations
             @kpdc       = FactoryBot.create(:organization)
-            @signu      = FactoryBot.create(:organization, name: "Sigma Nu", type: "Fraternity")
-            @art_club   = FactoryBot.create(:organization, name: "BHS Art Club", type: "Student Club")
-            @akdp       = FactoryBot.create(:organization, name: "Alpha Kappa Delta Phi", type: "Sorority")
-            @kapsig     = FactoryBot.create(:organization, name: "Kappa Sigma", type: "Fraternity")
-            @cmu        = FactoryBot.create(:organization, name: "Carnegie Mellon University", type: "School")
+            @signu      = FactoryBot.create(:organization, name: "Sigma Nu", orgType: "Fraternity")
+            @art_club   = FactoryBot.create(:organization, name: "BHS Art Club", orgType: "Student Club")
+            @akdp       = FactoryBot.create(:organization, name: "Alpha Kappa Delta Phi", orgType: "Sorority")
+            @kapsig     = FactoryBot.create(:organization, name: "Kappa Sigma", orgType: "Fraternity")
+            @cmu        = FactoryBot.create(:organization, name: "Carnegie Mellon University", orgType: "School")
         end
 
         def destroy_organizations
