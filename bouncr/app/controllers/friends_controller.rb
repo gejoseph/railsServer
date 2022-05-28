@@ -9,11 +9,6 @@ class FriendsController < ApplicationController
     render json: @friends
   end
 
-  def user_friends
-    @friends = Friend.by_user(params[:id])
-    render json: FriendBlueprint.render(@friends)
-  end
-
   # GET /friends/1
   def show
     render json: @friend
@@ -22,7 +17,7 @@ class FriendsController < ApplicationController
   # POST /friends
   def create
     #@friend = Friend.new(friend_params)
-    @friend = Friend.new(user1_id: params[:user1_id], user2_id:params[:user2_id],accepted: false)
+    @friend = Friend.new(user1_id: params[:user1_id], user2_id: params[:user2_id], accepted: false)
     if @friend.save
       render json: {
         returnValue: 0,
@@ -40,9 +35,9 @@ class FriendsController < ApplicationController
   def update
     if @friend.update(accepted: params[:accepted])
       render json: {
-      returnValue: 0,
-      returnString: "success"
-    }
+        returnValue: 0,
+        returnString: "success"
+      }
     else
       render json: {
         returnValue: -1,

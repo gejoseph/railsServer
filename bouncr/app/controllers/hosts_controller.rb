@@ -9,23 +9,6 @@ class HostsController < ApplicationController
     render json: HostBlueprint.render(@hosts)
   end
 
-  # DEPRECATED???
-  # # GET /events_for_host
-  # def index_for_host
-  #   @hosts = Host.by_user(params[:id])
-  #   options = {include: [:event]}
-  #   render json: HostSerializer.new(@hosts,options)
-  # end
-
-  # # DEPRECATED???
-  # # GET /hosts_for_event
-  # def index_for_event
-  #   @hosts = Host.by_event(params[:id])
-  #   options = {include: [:user]}
-  #   render json: HostSerializer.new(@hosts,options)
-  # end    
-
-
   # GET /hosts/1
   def show
     render json: HostBlueprint.render(@host)

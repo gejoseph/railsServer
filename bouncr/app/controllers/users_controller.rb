@@ -10,9 +10,15 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
+      render json: {
+        user: @user, 
+        token: token
+      }
     else
-      render json: {error: "Invalid username or password"}
+      render json: {
+        returnValue: -1,
+        returnString: "Invalid username or password"
+      }
     end
   end
 
@@ -29,7 +35,6 @@ class UsersController < ApplicationController
 
   # GET /event_guests/
   def event_guests
-
     @users = User.for_invited(params[:id], params[:invite_status])
     if params[:checked_in].to_s.downcase == "true"
       @users = @users.checked_in
@@ -37,7 +42,7 @@ class UsersController < ApplicationController
       @users = @users.not_checked_in
     end
 
-    @friends = User.initiated_friendship(params[:user_id],true) + (User.recieved_friendship(params[:id],true))
+    @friends = User.initiated_friendship(params[:user_id], true) + (User.recieved_friendship(params[:id], true))
 
     if params[:is_friend].to_s.downcase == "true"
       @users = @users & @friends
@@ -64,9 +69,9 @@ class UsersController < ApplicationController
   def index_friend_requests
     @users = []
     if params[:sentByMe].to_s.downcase == "true"
-      @users = User.initiated_friendship(params[:id],false)
+      @users = User.initiated_friendship(params[:id], false)
     else
-      @users = User.recieved_friendship(params[:id],false)
+      @users = User.recieved_friendship(params[:id], false)
     end 
     render json: UserBlueprint.render(@users, view: :other_user)
   end
@@ -74,17 +79,27 @@ class UsersController < ApplicationController
   # PUT /users/:id
   def update
     if @user.update(user_params)
-        token = encode_token({user_id: @user.id})
-        render json: {user: @user, token: token}
+      token = encode_token({user_id: @user.id})
+      render json: {
+        user: @user, 
+        token: token
+      }
     else
-        render json: {error: "Invalid update"}
+      render json: {
+        returnValue: -1,
+        returnString: "Invalid update"
+      }
     end
   end
 
+  # DELETE /users/:id
   def destroy
     @user.destroy
     if !@user.destroyed?
-      render json: {error: "Invalid destroy"}
+      render json: {
+        returnValue: -1,
+        returnString: "Invalid destroy"
+      }
     end
   end
 
@@ -105,23 +120,25 @@ class UsersController < ApplicationController
         token: token
       }
     else
-      render json: {error: "Invalid username or password"}
+      render json: {
+        returnValue: -1,
+        returnString: "Invalid username or password"
+      }
     end
   end
 
-
+  # GET /auto_login
   def auto_login
     render json: UserBlueprint.render(@user, view: :normal)
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  def user_params
-    params.permit(:username, :password, :email,:firstName,:lastName,:phoneNumber)
-  end
+    def user_params
+      params.permit(:username, :password, :email, :firstName, :lastName, :phoneNumber)
+    end
 
 end

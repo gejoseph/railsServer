@@ -6,7 +6,6 @@ class OrganizationUsersController < ApplicationController
   # GET /organization_users
   def index
     @organization_users = OrganizationUser.all
-
     render json: @organization_users
   end
 

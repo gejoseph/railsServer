@@ -15,13 +15,6 @@ class EventsController < ApplicationController
     render json: EventBlueprint.render(@events, view: :normal)
   end
 
-  # Got rid of??
-  # def guest_events
-  #   @events = Event.forGuest(params[:id]).alphabetical
-  #   options = {}
-  #   render json: EventSerializer.new(@events,options)
-  # end
-
   # GET /events/1
   def show
     render json: EventBlueprint.render(@event, view: :show)

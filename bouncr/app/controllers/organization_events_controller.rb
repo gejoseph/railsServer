@@ -6,7 +6,6 @@ class OrganizationEventsController < ApplicationController
   # GET /organization_events
   def index
     @organization_events = OrganizationEvent.all
-
     render json: @organization_events
   end
 
