@@ -223,9 +223,9 @@ kenny_dance_party      = Invite.create( user: kenny,
                                         coverChargePaid: 2.00)
 grace_dance_party      = Invite.create( user: grace,
                                         event: dance_party,
-                                        checkinTime: DateTime.new(2022, 4, 15, 10, 12, 0),
+                                        checkinTime: nil,
                                         inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinStatus: false,
                                         coverChargePaid: 10.00)
 
 # Art Night Invites ======
@@ -243,9 +243,9 @@ john_art_night         = Invite.create( user: john,
                                         coverChargePaid: 0)
 max_art_night          = Invite.create( user: max,
                                         event: art_night,
-                                        checkinTime: DateTime.new(2022, 9, 24, 14, 0, 0),
+                                        checkinTime: nil,
                                         inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinStatus: false,
                                         coverChargePaid: 0)
 
 # Charity Event Invites ======
@@ -257,9 +257,9 @@ grace_charity_event    = Invite.create( user: grace,
                                         coverChargePaid: 0)
 profh_charity_event    = Invite.create( user: profh,
                                         event: charity_event,
-                                        checkinTime: DateTime.new(2022, 5, 1, 21, 0, 12),
-                                        inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinTime: nil,
+                                        inviteStatus: false,
+                                        checkinStatus: false,
                                         coverChargePaid: 0)
 kenny_charity_event    = Invite.create( user: kenny,
                                         event: charity_event,
@@ -277,15 +277,15 @@ sara_signu_party       = Invite.create( user: sara,
                                         coverChargePaid: 0)
 max_signu_party        = Invite.create( user: max,
                                         event: signu_party,
-                                        checkinTime: DateTime.new(2022, 1, 20, 22, 0, 0),
+                                        checkinTime: nil,
                                         inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinStatus: false,
                                         coverChargePaid: 20)
 shane_signu_party      = Invite.create( user: shane,
                                         event: signu_party,
-                                        checkinTime: DateTime.new(2022, 1, 20, 23, 36, 1),
-                                        inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinTime: nil,
+                                        inviteStatus: false,
+                                        checkinStatus: false,
                                         coverChargePaid: 30)
 grace_signu_party      = Invite.create( user: grace,
                                         event: signu_party,
@@ -323,9 +323,9 @@ profh_coffee_chat      = Invite.create( user: profh,
                                         coverChargePaid: 0)
 sara_coffee_chat       = Invite.create( user: sara,
                                         event: coffee_chat,
-                                        checkinTime: DateTime.new(2022, 4, 7, 8, 12, 0),
+                                        checkinTime: nil,
                                         inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinStatus: false,
                                         coverChargePaid: 0)
 kenny_coffee_chat      = Invite.create( user: kenny,
                                         event: coffee_chat,
@@ -335,7 +335,7 @@ kenny_coffee_chat      = Invite.create( user: kenny,
                                         coverChargePaid: 0)
 grace_coffee_chat      = Invite.create( user: grace,
                                         event: coffee_chat,
-                                        checkinTime: DateTime.new(2022, 4, 7, 8, 1, 43),
+                                        checkinTime: nil,
                                         inviteStatus: true,
-                                        checkinStatus: true,
+                                        checkinStatus: false,
                                         coverChargePaid: 0)
