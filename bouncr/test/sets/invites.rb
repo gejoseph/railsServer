@@ -18,7 +18,6 @@ module Contexts
                                                         user: @shane,
                                                         event: @art_night,
                                                         checkinTime: DateTime.new(2022, 9, 24, 13, 5, 0),
-                                                        phoneNumber: 3213214321,
                                                         coverChargePaid: 0)
             @john_art_night         = FactoryBot.create(:invite,
                                                         user: @john,
@@ -26,13 +25,11 @@ module Contexts
                                                         checkinTime: nil,
                                                         inviteStatus: false,
                                                         checkinStatus: false,
-                                                        phoneNumber: 3213214321,
                                                         coverChargePaid: 0)
             @max_art_night          = FactoryBot.create(:invite,
                                                         user: @max,
                                                         event: @art_night,
                                                         checkinTime: DateTime.new(2022, 9, 24, 14, 0, 0),
-                                                        phoneNumber: 3213214321,
                                                         coverChargePaid: 0)
             
             # Charity Event Invites ============================================
@@ -40,20 +37,17 @@ module Contexts
                                                         user: @grace,
                                                         event: @charity_event,
                                                         checkinTime: DateTime.new(2022, 5, 1, 20, 0, 0),
-                                                        phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
             @profh_charity_event    = FactoryBot.create(:invite,
                                                         user: @profh,
                                                         event: @charity_event,
                                                         checkinTime: DateTime.new(2022, 5, 1, 21, 0, 12),
-                                                        phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
             @kenny_charity_event    = FactoryBot.create(:invite,
                                                         user: @kenny,
                                                         event: @charity_event,
                                                         checkinTime: nil,
                                                         checkinStatus: false,
-                                                        phoneNumber: 4123456788,
                                                         coverChargePaid: 0)
 
             # Signu Party Invites ==============================================
@@ -63,25 +57,21 @@ module Contexts
                                                         checkinTime: nil,
                                                         inviteStatus: false,
                                                         checkinStatus: false,
-                                                        phoneNumber: 5083211234,
                                                         coverChargePaid: 0)
             @max_signu_party        = FactoryBot.create(:invite,
                                                         user: @max,
                                                         event: @signu_party,
                                                         checkinTime: DateTime.new(2022, 1, 20, 22, 0, 0),
-                                                        phoneNumber: 5083211234,
                                                         coverChargePaid: 20)
             @shane_signu_party      = FactoryBot.create(:invite,
                                                         user: @shane,
                                                         event: @signu_party,
                                                         checkinTime: DateTime.new(2022, 1, 20, 23, 36, 1),
-                                                        phoneNumber: 5083211234,
                                                         coverChargePaid: 30)
             @grace_signu_party      = FactoryBot.create(:invite,
                                                         user: @grace,
                                                         event: @signu_party,
                                                         checkinTime: DateTime.new(2022, 1, 20, 1, 23, 45),
-                                                        phoneNumber: 5083211234,
                                                         coverChargePaid: 30)
 
             # Kapsig Party Invites =============================================
@@ -91,14 +81,12 @@ module Contexts
                                                         checkinTime: nil,
                                                         inviteStatus: false,
                                                         checkinStatus: false,
-                                                        phoneNumber: 6174125032,
                                                         coverChargePaid: 0)
             @kenny_kapsig_party     = FactoryBot.create(:invite,
                                                         user: @kenny,
                                                         event: @kapsig_party,
                                                         checkinTime: nil,
                                                         checkinStatus: false,
-                                                        phoneNumber: 6174125032,
                                                         coverChargePaid: 0)
             @profh_kapsig_party     = FactoryBot.create(:invite,
                                                         user: @profh,
@@ -106,7 +94,6 @@ module Contexts
                                                         checkinTime: nil,
                                                         inviteStatus: false,
                                                         checkinStatus: false,
-                                                        phoneNumber: 6174125032,
                                                         coverChargePaid: 0)
 
             # Coffee Chat Invites ==============================================
@@ -114,25 +101,21 @@ module Contexts
                                                         user: @profh,
                                                         event: @coffee_chat,
                                                         checkinTime: DateTime.new(2022, 4, 7, 8, 0, 0),
-                                                        phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
             @sara_coffee_chat       = FactoryBot.create(:invite,
                                                         user: @sara,
                                                         event: @coffee_chat,
                                                         checkinTime: DateTime.new(2022, 4, 7, 8, 12, 0),
-                                                        phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
             @kenny_coffee_chat      = FactoryBot.create(:invite,
                                                         user: @kenny,
                                                         event: @coffee_chat,
                                                         checkinTime: DateTime.new(2022, 4, 7, 8, 31, 0),
-                                                        phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
             @grace_coffee_chat      = FactoryBot.create(:invite,
                                                         user: @grace,
                                                         event: @coffee_chat,
                                                         checkinTime: DateTime.new(2022, 4, 7, 8, 1, 43),
-                                                        phoneNumber: 4120670443,
                                                         coverChargePaid: 0)
         end
 

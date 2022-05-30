@@ -220,14 +220,12 @@ kenny_dance_party      = Invite.create( user: kenny,
                                         checkinTime: DateTime.new(2022, 4, 15, 10, 5, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 1231231234,
                                         coverChargePaid: 2.00)
 grace_dance_party      = Invite.create( user: grace,
                                         event: dance_party,
                                         checkinTime: DateTime.new(2022, 4, 15, 10, 12, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 1231231234,
                                         coverChargePaid: 10.00)
 
 # Art Night Invites ======
@@ -236,21 +234,18 @@ shane_art_night        = Invite.create( user: shane,
                                         checkinTime: DateTime.new(2022, 9, 24, 13, 5, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 3213214321,
                                         coverChargePaid: 0)
 john_art_night         = Invite.create( user: john,
                                         event: art_night,
                                         checkinTime: nil,
                                         inviteStatus: false,
                                         checkinStatus: false,
-                                        phoneNumber: 3213214321,
                                         coverChargePaid: 0)
 max_art_night          = Invite.create( user: max,
                                         event: art_night,
                                         checkinTime: DateTime.new(2022, 9, 24, 14, 0, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 3213214321,
                                         coverChargePaid: 0)
 
 # Charity Event Invites ======
@@ -259,21 +254,18 @@ grace_charity_event    = Invite.create( user: grace,
                                         checkinTime: DateTime.new(2022, 5, 1, 20, 0, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 4123456788,
                                         coverChargePaid: 0)
 profh_charity_event    = Invite.create( user: profh,
                                         event: charity_event,
                                         checkinTime: DateTime.new(2022, 5, 1, 21, 0, 12),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 4123456788,
                                         coverChargePaid: 0)
 kenny_charity_event    = Invite.create( user: kenny,
                                         event: charity_event,
                                         checkinTime: nil,
                                         inviteStatus: true,
                                         checkinStatus: false,
-                                        phoneNumber: 4123456788,
                                         coverChargePaid: 0)
 
 # Signu Party Invites ======
@@ -282,28 +274,24 @@ sara_signu_party       = Invite.create( user: sara,
                                         checkinTime: nil,
                                         inviteStatus: false,
                                         checkinStatus: false,
-                                        phoneNumber: 5083211234,
                                         coverChargePaid: 0)
 max_signu_party        = Invite.create( user: max,
                                         event: signu_party,
                                         checkinTime: DateTime.new(2022, 1, 20, 22, 0, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 5083211234,
                                         coverChargePaid: 20)
 shane_signu_party      = Invite.create( user: shane,
                                         event: signu_party,
                                         checkinTime: DateTime.new(2022, 1, 20, 23, 36, 1),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 5083211234,
                                         coverChargePaid: 30)
 grace_signu_party      = Invite.create( user: grace,
                                         event: signu_party,
                                         checkinTime: DateTime.new(2022, 1, 20, 1, 23, 45),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 5083211234,
                                         coverChargePaid: 30)
 
 # Kapsig Party Invites ======
@@ -312,21 +300,18 @@ john_kapsig_party      = Invite.create( user: john,
                                         checkinTime: nil,
                                         inviteStatus: false,
                                         checkinStatus: false,
-                                        phoneNumber: 6174125032,
                                         coverChargePaid: 0)
 kenny_kapsig_party     = Invite.create( user: kenny,
                                         event: kapsig_party,
                                         checkinTime: nil,
                                         inviteStatus: true,
                                         checkinStatus: false,
-                                        phoneNumber: 6174125032,
                                         coverChargePaid: 0)
 profh_kapsig_party     = Invite.create( user: profh,
                                         event: kapsig_party,
                                         checkinTime: nil,
                                         inviteStatus: false,
                                         checkinStatus: false,
-                                        phoneNumber: 6174125032,
                                         coverChargePaid: 0)
 
 # Coffee Chat Invites ======
@@ -335,26 +320,22 @@ profh_coffee_chat      = Invite.create( user: profh,
                                         checkinTime: DateTime.new(2022, 4, 7, 8, 0, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 4120670443,
                                         coverChargePaid: 0)
 sara_coffee_chat       = Invite.create( user: sara,
                                         event: coffee_chat,
                                         checkinTime: DateTime.new(2022, 4, 7, 8, 12, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 4120670443,
                                         coverChargePaid: 0)
 kenny_coffee_chat      = Invite.create( user: kenny,
                                         event: coffee_chat,
                                         checkinTime: DateTime.new(2022, 4, 7, 8, 31, 0),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 4120670443,
                                         coverChargePaid: 0)
 grace_coffee_chat      = Invite.create( user: grace,
                                         event: coffee_chat,
                                         checkinTime: DateTime.new(2022, 4, 7, 8, 1, 43),
                                         inviteStatus: true,
                                         checkinStatus: true,
-                                        phoneNumber: 4120670443,
                                         coverChargePaid: 0)

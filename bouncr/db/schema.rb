@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_04_17_201714) do
   create_table "friends", force: :cascade do |t|
     t.integer "user1_id", null: false
     t.integer "user2_id", null: false
-    t.boolean "accepted"
+    t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user1_id"], name: "index_friends_on_user1_id"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2022_04_17_201714) do
     t.datetime "checkinTime"
     t.boolean "inviteStatus"
     t.boolean "checkinStatus"
-    t.integer "phoneNumber"
     t.float "coverChargePaid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
