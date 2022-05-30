@@ -6,12 +6,12 @@ class FriendsController < ApplicationController
   # GET /friends
   def index
     @friends = Friend.all
-    render json: @friends
+    render json: FriendBlueprint.render(@friends)
   end
 
   # GET /friends/1
   def show
-    render json: @friend
+    render json: FriendBlueprint.render(@friend)
   end
 
   # POST /friends
