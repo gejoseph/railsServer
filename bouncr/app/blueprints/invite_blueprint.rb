@@ -6,7 +6,7 @@ class InviteBlueprint < Blueprinter::Base
   
   
   view :normal do
-    fields :checkinTime, :inviteStatus, :checkinStatus, :coverChargePaid
+    fields :checkinTime, :inviteStatus, :coverChargePaid, :event_id , :user_id
   end
   
   view :with_event do
