@@ -202,6 +202,14 @@ shane_kenny    = Friend.create(user1: shane, user2: kenny, accepted: true)
 shane_profh    = Friend.create(user1: shane, user2: profh, accepted: false)
 profh_max      = Friend.create(user1: profh, user2: max, accepted: true)
 john_sara      = Friend.create(user1: john, user2: sara, accepted: false)
+john_shane     = Friend.create(user1: john, user2: shane, accepted: true) ##
+profh_john     = Friend.create(user1: profh, user2: john, accepted: false)
+grace_max      = Friend.create(user1: grace, user2: max, accepted: true)
+max_sara       = Friend.create(user1: max, user2: sara, accepted: false)
+max_shane      = Friend.create(user1: max, user2: shane, accepted: true)
+sara_shane     = Friend.create(user1: sara, user2: shane, accepted: true)
+sara_profh     = Friend.create(user1: sara, user2: profh, accepted: false)
+grace_shane    = Friend.create(user1: grace, user2: shane, accepted: true)
 
 
 # Hosts ========================================================================
