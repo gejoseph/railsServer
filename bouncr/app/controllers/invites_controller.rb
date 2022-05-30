@@ -12,7 +12,8 @@ class InvitesController < ApplicationController
   # GET /guest_invites
   def guest_invites
     @invites = Invite.by_user(params[:id])
-    render json: InviteBlueprint.render(@invites, view: :with_event)
+    #render json: InviteBlueprint.render(@invites, view: :with_event)
+    render json: InviteBlueprint.render(@invites, view: :normal)
   end
 
   # GET /invites/1

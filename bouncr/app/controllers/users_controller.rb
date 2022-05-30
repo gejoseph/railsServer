@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.valid?
       token = encode_token({user_id: @user.id})
       render json: {
-        user: @user, 
+        user: @user.as_json(:except => [:password_digest, :created_at, :updated_at]), 
         token: token
       }
     else
@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       token = encode_token({user_id: @user.id})
       render json: {
-        user: @user, 
+        user: @user.as_json(:except => [:password_digest, :created_at, :updated_at]), 
         token: token
       }
     else
@@ -138,7 +138,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.permit(:username, :password, :email, :firstName, :lastName, :phoneNumber)
+      params.permit(:username, :password, :email, :firstName, :lastName, :phoneNumber, :birthday)
     end
 
 end
