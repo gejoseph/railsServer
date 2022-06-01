@@ -43,13 +43,13 @@ class UserTest < ActiveSupport::TestCase
     end
 
     # test the scope 'initiatedFriendship'
-    should "show all the users that a given user friend requested" do
+    should "show all the users that a given user friend requested (initiated)" do
       assert_equal 2, User.initiatedFriendship(1) # user kenny's id
       assert_equal ["gjoseph", "shsong"], User.initiatedFriendship(1).alphabetical.map{|e| e.username}
     end
 
     # test the scope 'receivedFriendship'
-    should "show all the users that a given user friend requested" do
+    should "show all the users that a given user friend requested (received)" do
       assert_equal 1, User.receivedFriendship(1) # user kenny's id
       assert_equal ["saung"], User.receivedFriendship(1).alphabetical.map{|e| e.username}
     end
