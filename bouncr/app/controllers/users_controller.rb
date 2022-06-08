@@ -10,10 +10,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.valid?
       token = encode_token({user_id: @user.id})
-      render json: {
-        user: @user.as_json(:except => [:password_digest, :created_at, :updated_at]), 
-        token: token
-      }
+      render json: UserBlueprint.render(@user, view: :login, token: token)
     else
       render json: {
         returnValue: -1,
@@ -80,10 +77,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       token = encode_token({user_id: @user.id})
-      render json: {
-        user: @user.as_json(:except => [:password_digest, :created_at, :updated_at]), 
-        token: token
-      }
+      render json: UserBlueprint.render(@user, view: :login, token: token)
     else
       render json: {
         returnValue: -1,
@@ -94,11 +88,15 @@ class UsersController < ApplicationController
 
   # DELETE /users/:id
   def destroy
-    @user.destroy
-    if !@user.destroyed?
+    if @user.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
       render json: {
         returnValue: -1,
-        returnString: "Invalid destroy"
+        returnString: "failure"
       }
     end
   end
@@ -115,10 +113,7 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       token = encode_token({user_id: @user.id})
-      render json: {
-        user: @user.as_json(:except => [:password_digest, :created_at, :updated_at]),
-        token: token
-      }
+      render json: UserBlueprint.render(@user, view: :login, token: token)
     else
       render json: {
         returnValue: -1,

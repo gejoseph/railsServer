@@ -9,11 +9,9 @@ class UserBlueprint < Blueprinter::Base
     fields :username, :firstName, :lastName
   end
 
-  # Add new view w/ token input
-
   view :login do
-    #fields :username, :email, :firstName, :lastName, :phoneNumber, :birthday
-    fields (:token) do |_user, options|
+    fields :username, :email, :firstName, :lastName, :phoneNumber, :birthday
+    field :token do |_user, options|
       options[:token]
     end
   end
