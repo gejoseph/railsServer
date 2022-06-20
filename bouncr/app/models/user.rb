@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
     #Scopes
     scope :alphabetical, -> { order('username') }
-    scope :search, -> (term){where('username LIKE ?', term)}
+    scope :search, -> (term){where('username LIKE ?', "%#{term}%")}
     scope :for_hosting, ->(event_id) {joins(:hosts).where('hosts.event_id = ?',event_id)}
     scope :for_invited, ->(event_id, invite_status) {joins(:invites).where('invites.event_id = ? AND invites.inviteStatus=?',event_id,invite_status == 'true')}
     scope :checked_in, ->{joins(:invites).where('invites.checkinTime IS NOT NULL')}
