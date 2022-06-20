@@ -2,7 +2,7 @@ class EventBlueprint < Blueprinter::Base
   identifier :id
   
   view :normal do
-    fields :name, :startTime, :endTime, :street1, :street1, :street2, :city, :zip, :description, 
+    fields :name, :startTime, :endTime, :street1, :street1, :street2, :city, :zip, :description, :state,
            :attendenceCap, :attendenceVisible, :friendsAttendingVisible, :coverCharge, :isOpenInvite, :venueLatitude, :venueLongitude
   end
 
