@@ -25,12 +25,8 @@ class InvitesController < ApplicationController
   def create
     @invite = Invite.new(invite_params)
 
-    # Render response JSON b/c frontend doesn't need to know invite details on create
     if @invite.save
-      render json: {
-        returnValue: 0,
-        returnString: "success"
-      }
+      render json: InviteBlueprint.render(@invite, view: :normal)
     else
       render json: {
         returnValue: -1,
@@ -43,10 +39,7 @@ class InvitesController < ApplicationController
   def update
     # Render response JSON b/c frontend doesn't need to know invite details on update
     if @invite.update(invite_params)
-      render json: {
-        returnValue: 0,
-        returnString: "success"
-      }
+      render json: InviteBlueprint.render(@invite, view: :normal)
     else
       render json: {
         returnValue: -1,
