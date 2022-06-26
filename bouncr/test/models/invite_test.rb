@@ -26,18 +26,19 @@ class InviteTest < ActiveSupport::TestCase
     # now run the tests:
     # test the scope 'by_user'
     should "show the invites for a given user" do
-      assert_equal 2, Invite.by_user(3).size # user sara's id
-      assert_equal [@sara_art_night, @sara_charity_event], Invite.by_user(3)
+      assert_equal 2, Invite.by_user(4).size # user sara's id
+      assert_equal [@sara_signu_party, @sara_coffee_chat], Invite.by_user(4)
     end
 
     # test the scope 'by_event'
     should "show the invites for a given event" do
-      assert_equal 1, Invite.by_event(3).size # event sig nu party id
-      assert_equal [@john_signu_party], Invite.by_event(3)
+      assert_equal 4, Invite.by_event(4).size # event sig nu party id
+      assert_equal [@sara_signu_party, @max_signu_party, @shane_signu_party, @grace_signu_party], Invite.by_event(4)
     end
 
     # test the scope 'checkedIn'
     should "show checkedIn invites" do
+      assert_equal 13, Invite.checkedIn.size
       assert_equal [@kenny_dance_party, @grace_dance_party, @shane_art_night, @max_art_night, @grace_charity_event, @profh_charity_event, @max_signu_party, @shane_signu_party, @grace_signu_party, @profh_coffee_chat, @sara_coffee_chat, @kenny_coffee_chat, @grace_coffee_chat], Invite.checkedIn
     end
   

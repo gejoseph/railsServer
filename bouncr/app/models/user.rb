@@ -12,12 +12,12 @@ class User < ApplicationRecord
     #Scopes
     scope :alphabetical, -> { order('username') }
     scope :search, -> (term){where('username LIKE ?', term)}
-    scope :for_hosting, ->(event_id) {joins(:hosts).where('hosts.event_id = ?',event_id)}
+    scope :for_hosting, ->(event_id) {joins(:hosts).where('hosts.event_id = ?', event_id)}
     scope :for_invited, ->(event_id, invite_status) {joins(:invites).where('invites.event_id = ? AND invites.inviteStatus=?',event_id,invite_status == 'true')}
     scope :checked_in, ->{joins(:invites).where('invites.checkinTime IS NOT NULL')}
     scope :not_checked_in, ->{joins(:invites).where('invites.checkinTime IS NULL')}
-    scope :initiated_friendship , ->(user_id,accepted) {joins(:recievedFriendships).where('friends.user1_id = ? AND friends.accepted = ?',user_id,accepted)}
-    scope :recieved_friendship , ->(user_id,accepted) {joins(:initiatedFriendships).where('friends.user2_id = ?AND friends.accepted = ?',user_id,accepted)}
+    scope :initiated_friendship , ->(user_id, accepted) {joins(:recievedFriendships).where('friends.user1_id = ? AND friends.accepted = ?',user_id,accepted)}
+    scope :recieved_friendship , ->(user_id, accepted) {joins(:initiatedFriendships).where('friends.user2_id = ? AND friends.accepted = ?',user_id,accepted)}
     
     #Methods
 
