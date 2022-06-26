@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
   # GET /invites
   def index
     @invites = Invite.all
-    render json: InviteBlueprint.render(@invites)
+    render json: InviteBlueprint.render(@invites, view: :normal)
   end
 
   # GET /guest_invites
@@ -18,7 +18,7 @@ class InvitesController < ApplicationController
 
   # GET /invites/1
   def show
-    render json: InviteBlueprint.render(@invite)
+    render json: InviteBlueprint.render(@invite, view: :normal)
   end
 
   # POST /invites

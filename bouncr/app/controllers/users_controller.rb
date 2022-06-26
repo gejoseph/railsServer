@@ -32,14 +32,15 @@ class UsersController < ApplicationController
 
   # GET /event_guests/
   def event_guests
-    @users = User.for_invited(params[:id], params[:invite_status])
+    @users = User.for_invited_event(params[:id])
+    @users = @users.for_invited_status(params[:invite_status].to_s.downcase == "true")
     if params[:checked_in].to_s.downcase == "true"
       @users = @users.checked_in
     else
       @users = @users.not_checked_in
     end
 
-    @friends = User.initiated_friendship(params[:user_id], true) + (User.recieved_friendship(params[:id], true))
+    @friends = User.initiated_friendship(params[:user_id], true) + (User.recieved_friendship(params[:user_id], true))
 
     if params[:is_friend].to_s.downcase == "true"
       @users = @users & @friends
@@ -65,7 +66,7 @@ class UsersController < ApplicationController
   # GET /user_friends
   def index_friend_requests
     @users = []
-    if params[:sentByMe].to_s.downcase == "true"
+    if params[:sent_by_me].to_s.downcase == "true"
       @users = User.initiated_friendship(params[:id], false)
     else
       @users = User.recieved_friendship(params[:id], false)
