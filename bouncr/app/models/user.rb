@@ -3,8 +3,11 @@ class User < ApplicationRecord
 
     has_many :hosts, dependent: :destroy
     has_many :invites, dependent: :destroy
-    has_many :events, through: :hosts
     has_many :events, through: :invites
+    has_many :events, through: :hosts
+
+    # has_many :hostedEvents, class_name: 'Event', foreign_key: ''
+    
 
     has_many :initiatedFriendships, class_name: 'Friend', foreign_key: 'user1_id', dependent: :destroy
     has_many :recievedFriendships, class_name: 'Friend', foreign_key: 'user2_id',dependent: :destroy
@@ -18,7 +21,7 @@ class User < ApplicationRecord
     scope :for_invited_status, ->(invite_status) {joins(:invites).where('invites.inviteStatus = ?',invite_status)}
     scope :checked_in, ->{joins(:invites).where('invites.checkinTime IS NOT NULL')}
     scope :not_checked_in, ->{joins(:invites).where('invites.checkinTime IS NULL')}
-    scope :initiated_friendship , ->(user_id,accepted) {joins(:recievedFriendships).where('friends.user1_id = ? AND friends.accepted = ?',user_id,accepted)}
-    scope :recieved_friendship , ->(user_id,accepted) {joins(:initiatedFriendships).where('friends.user2_id = ?AND friends.accepted = ?',user_id,accepted)}
+    scope :initiated_friendship , ->(user_id, accepted) {joins(:recievedFriendships).where('friends.user1_id = ? AND friends.accepted = ?',user_id, accepted)}
+    scope :recieved_friendship , ->(user_id, accepted) {joins(:initiatedFriendships).where('friends.user2_id = ? AND friends.accepted = ?',user_id, accepted)}
     
 end

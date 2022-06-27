@@ -36,14 +36,14 @@ class EventTest < ActiveSupport::TestCase
     
     # test the scope 'forHost'
     should "show the events for a given host" do
-      assert_equal 2, Event.forHost(3).size # user sara's id
-      assert_equal ["Art Night", "Charity Dinner"], Event.forHost(3).alphabetical.map{|e| e.name}
+      assert_equal 2, Event.forHost(4).size # user sara's id
+      assert_equal ["Art Night", "Charity Dinner"], Event.forHost(4).alphabetical.map{|e| e.name}
     end
 
     # test the scope 'forGuest'
     should "show the events for a given guest" do
-      assert_equal 4, Event.forGuest(2).size # user grace's id
-      assert_equal ["Charity Dinner", "Coffee Chat with IS Profs", "Dance Party", "Sigma Nu Party"], Event.forGuest(2).alphabetical.map{|e| e.name}
+      assert_equal 4, Event.forGuest(3).size # user grace's id
+      assert_equal ["Charity Dinner", "Coffee Chat with IS Profs", "Dance Party", "Sigma Nu Party"], Event.forGuest(3).alphabetical.map{|e| e.name}
     end
 
     # test the scope 'current'
@@ -54,14 +54,14 @@ class EventTest < ActiveSupport::TestCase
 
     # test the scope 'past'
     should "show all the past events" do
-      assert_equal 3, Event.past.size
-      assert_equal ["Coffee Chat with IS Profs", "Dance Party", "Sigma Nu Party"], Event.past.alphabetical.map{|e| e.name}.sort
+      assert_equal 5, Event.past.size
+      assert_equal ["Charity Dinner", "Coffee Chat with IS Profs", "Dance Party", "Kappa Sigma Partay", "Sigma Nu Party"], Event.past.alphabetical.map{|e| e.name}.sort
     end
 
-    # test the scope 'upcoming'
-    should "show all the upcoming events" do
-      assert_equal 3, Event.upcoming.size
-      assert_equal ["Art Night", "Charity Dinner", "Kappa Sigma Partay"], Event.upcoming.alphabetical.map{|e| e.name}.sort
+    # test the scope 'future'
+    should "show all the future events" do
+      assert_equal 1, Event.future.size
+      assert_equal ["Art Night"], Event.future.alphabetical.map{|e| e.name}.sort
     end
 
   end
