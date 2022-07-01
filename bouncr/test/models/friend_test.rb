@@ -21,13 +21,13 @@ class FriendTest < ActiveSupport::TestCase
     # now run the tests:
     # test the scope 'accepted'
     should "show accepted friend requests" do
-      assert_equal [@grace_sara, @shane_kenny, @profh_max], Friend.accepted
+      assert_equal [@grace_sara, @shane_kenny, @profh_max, @john_shane, @grace_max, @max_shane, @sara_shane, @grace_shane], Friend.accepted
     end
 
     # test the scope 'byUser'
     should "show the friend requests for a given user" do
-      assert_equal 3, Friend.by_user(4).size # user sara's id
-      assert_equal [@kenny_sara, @grace_sara, @john_sara], Friend.by_user(4)
+      assert_equal 6, Friend.by_user(4).size # user sara's id
+      assert_equal [@sara_shane, @sara_profh, @kenny_sara, @grace_sara, @john_sara, @max_sara], Friend.by_user(4)
     end
 
   end

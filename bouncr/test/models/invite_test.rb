@@ -38,8 +38,8 @@ class InviteTest < ActiveSupport::TestCase
 
     # test the scope 'checkedIn'
     should "show checkedIn invites" do
-      assert_equal 13, Invite.checkedIn.size
-      assert_equal [@kenny_dance_party, @grace_dance_party, @shane_art_night, @max_art_night, @grace_charity_event, @profh_charity_event, @max_signu_party, @shane_signu_party, @grace_signu_party, @profh_coffee_chat, @sara_coffee_chat, @kenny_coffee_chat, @grace_coffee_chat], Invite.checkedIn
+      assert_equal 6, Invite.checkedIn.size
+      assert_equal [@kenny_dance_party, @shane_art_night, @grace_charity_event, @grace_signu_party, @profh_coffee_chat, @kenny_coffee_chat], Invite.checkedIn
     end
   
   end
