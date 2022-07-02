@@ -117,7 +117,7 @@ class UsersController < ApplicationController
       render json: UserBlueprint.render(@user, view: :login, token: token)
     else
       render json: {
-        returnValue: -1,
+        returnValue: -2,
         returnString: "Invalid username or password"
       }
     end
