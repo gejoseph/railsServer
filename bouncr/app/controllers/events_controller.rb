@@ -1,53 +1,75 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
   before_action :authorized
+  wrap_parameters format: [:json]
+
   # GET /events
   def index
     @events = Event.all
-    render json: @events
+    render json: EventBlueprint.render(@events, view: :normal)
   end
 
+  # GET /host_events/:id
   def host_events
     @events = Event.forHost(params[:id]).alphabetical
-    options = {}
-    render json: EventSerializer.new(@events,options)
-  end
-
-  def guest_events
-    @events = Event.forGuest(params[:id]).alphabetical
-    options = {}
-    render json: EventSerializer.new(@events,options)
+    render json: EventBlueprint.render(@events, view: :normal)
   end
 
   # GET /events/1
   def show
-    options = {include: [:organizations]}
-    render json: EventSerializer.new(@event,options)
+    render json: EventBlueprint.render(@event, view: :show)
   end
 
   # POST /events
-  def create
+  def create_with_host
     @event = Event.new(event_params)
 
     if @event.save
-      render json: @event, status: :created, location: @event
+      if Host.create(user: User.find(params[:id]), event: @event)
+        render json: EventBlueprint.render(@event, view: :show)
+      else
+        @event.destroy
+        render json: {
+          returnValue: -1,
+          returnString: "unable to create host, deleting event too"
+        }
+      end
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "unable to create event"
+      }
+      #render json: @event.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /events/1
+  # PATCH/PUT /events/:id
   def update
     if @event.update(event_params)
-      render json: @event
+      render json: EventBlueprint.render(@event, view: :show)
+      # render json: @event
     else
-      render json: @event.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+      # render json: @event.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /events/1
+  # DELETE /events/:id
   def destroy
-    @event.destroy
+    if @event.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private
@@ -58,6 +80,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :startTime, :endTime, :street1, :street2, :city, :zip, :description, :attendenceVisible, :friendsAttendingVisible, :attendenceCap, :coverCharge, :isOpenInvite, :venueLatitude, :venueLongitude)
+      params.permit(:name, :startTime, :endTime, :street1, :street2, :city, :zip, :description, :attendenceVisible, :friendsAttendingVisible, :attendenceCap, :coverCharge, :isOpenInvite, :venueLatitude, :venueLongitude,:state)
     end
 end

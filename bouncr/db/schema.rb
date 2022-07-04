@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_185643) do
+ActiveRecord::Schema.define(version: 2022_04_17_201714) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.string "street1"
     t.string "street2"
     t.string "city"
+    t.string "state"
     t.integer "zip"
     t.text "description"
     t.boolean "attendenceVisible"
     t.boolean "friendsAttendingVisible"
     t.integer "attendenceCap"
-    t.integer "coverCharge"
+    t.float "coverCharge"
     t.boolean "isOpenInvite"
     t.float "venueLatitude"
     t.float "venueLongitude"
@@ -35,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
   create_table "friends", force: :cascade do |t|
     t.integer "user1_id", null: false
     t.integer "user2_id", null: false
-    t.boolean "accpeted"
+    t.boolean "accepted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user1_id"], name: "index_friends_on_user1_id"
@@ -57,8 +58,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.datetime "checkinTime"
     t.boolean "inviteStatus"
     t.boolean "checkinStatus"
-    t.integer "phoneNumber"
-    t.integer "coverChargePaid"
+    t.float "coverChargePaid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_invites_on_event_id"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "orgType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_185643) do
     t.string "firstName"
     t.string "lastName"
     t.integer "phoneNumber"
+    t.datetime "birthday"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

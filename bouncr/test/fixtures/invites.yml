@@ -6,7 +6,6 @@ one:
   checkinTime: 2022-02-28 11:16:37
   inviteStatus: false
   checkinStatus: false
-  phoneNumber: 1
   coverChargePaid: 1
 
 two:
@@ -15,5 +14,4 @@ two:
   checkinTime: 2022-02-28 11:16:37
   inviteStatus: false
   checkinStatus: false
-  phoneNumber: 1
   coverChargePaid: 1

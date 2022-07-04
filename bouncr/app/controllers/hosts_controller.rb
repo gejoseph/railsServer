@@ -1,34 +1,17 @@
 class HostsController < ApplicationController
   before_action :set_host, only: [:show, :update, :destroy]
   before_action :authorized
+  wrap_parameters format: [:json]
 
   # GET /hosts
   def index
     @hosts = Host.all
-
-    render json: @hosts
+    render json: HostBlueprint.render(@hosts)
   end
-
-    # GET /events_for_host
-    def index_for_host
-      @hosts = Host.by_user(params[:id])
-      #options = {include: [:event, :organization]}
-      options = {include: [:event]}
-      render json: HostSerializer.new(@hosts,options)
-    end
-
-    # GET /hosts_for_event
-    def index_for_event
-      @hosts = Host.by_event(params[:id])
-      options = {include: [:user]}
-      render json: HostSerializer.new(@hosts,options)
-    end    
-
-
 
   # GET /hosts/1
   def show
-    render json: @host
+    render json: HostBlueprint.render(@host)
   end
 
   # POST /hosts
@@ -36,24 +19,46 @@ class HostsController < ApplicationController
     @host = Host.new(host_params)
 
     if @host.save
-      render json: @host, status: :created, location: @host
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @host.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # PATCH/PUT /hosts/1
   def update
     if @host.update(host_params)
-      render json: @host
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @host.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # DELETE /hosts/1
   def destroy
-    @host.destroy
+    if @host.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private
