@@ -33,10 +33,14 @@ class UsersController < ApplicationController
   # GET /event_guests/
   def event_guests
     @users = User.for_invited_event(params[:id])
-    @users = @users.for_invited_status(params[:invite_status].to_s.downcase == "true")
+
+    if params[:invite_status].to_s.downcase == "true" || params[:invite_status].to_s.downcase == "false" 
+      @users = @users.for_invited_status(params[:invite_status].to_s.downcase == "true")
+    end
+    
     if params[:checked_in].to_s.downcase == "true"
       @users = @users.checked_in
-    else
+    elsif params[:checked_in].to_s.downcase == "false"
       @users = @users.not_checked_in
     end
 
