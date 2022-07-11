@@ -13,10 +13,10 @@ class EventBlueprint < Blueprinter::Base
 
   view :withAttendance do
     include_view :normal
-    field :AcceptedInvitesCount do |event, options|
+    field :acceptedInvitesCount do |event, options|
       event.invites.accepted.count
     end
-    field :CheckedInInvitescount do |event, options|
+    field :checkedInInvitescount do |event, options|
       event.invites.checkedIn.count
     end
   end
