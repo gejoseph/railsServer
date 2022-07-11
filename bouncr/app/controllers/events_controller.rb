@@ -12,7 +12,8 @@ class EventsController < ApplicationController
   # GET /host_events/:id
   def host_events
     @events = Event.forHost(params[:id]).alphabetical
-    render json: EventBlueprint.render(@events, view: :normal)
+    #render json: EventBlueprint.render(@events, view: :normal)
+    render json: EventBlueprint.render(@events, view: :withAttendance)
   end
 
   # GET /events/1

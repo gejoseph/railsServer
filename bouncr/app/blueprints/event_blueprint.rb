@@ -10,4 +10,14 @@ class EventBlueprint < Blueprinter::Base
     include_view :normal
     association :organizations, through: :organization_events, blueprint: OrganizationBlueprint
   end
+
+  view :withAttendance do
+    include_view :normal
+    field :AcceptedInvitesCount do |event, options|
+      event.invites.accepted.count
+    end
+    field :CheckedInInvitescount do |event, options|
+      event.invites.checkedIn.count
+    end
+  end
 end
