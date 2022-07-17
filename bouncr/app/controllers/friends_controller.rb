@@ -1,57 +1,75 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :update, :destroy]
   before_action :authorized
+  wrap_parameters format: [:json]
 
   # GET /friends
   def index
     @friends = Friend.all
-
-    render json: @friends
-  end
-
-  def user_friends
-    @friends = Friend.by_user(params[:id])
-    render json: FriendSerializer.new(@friends,{})
+    render json: FriendBlueprint.render(@friends)
   end
 
   # GET /friends/1
   def show
-    render json: @friend
+    render json: FriendBlueprint.render(@friend)
   end
 
   # POST /friends
   def create
-    @friend = Friend.new(friend_params)
-
+    #@friend = Friend.new(friend_params)
+    @friend = Friend.new(user1_id: params[:user1_id], user2_id: params[:user2_id], accepted: false)
     if @friend.save
-      render json: @friend, status: :created, location: @friend
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @friend.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
-  # PATCH/PUT /friends/1
+  # PATCH/PUT 
   def update
-    if @friend.update(friend_params)
-      render json: @friend
+    if @friend.update(accepted: params[:accepted])
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @friend.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # DELETE /friends/1
   def destroy
-    @friend.destroy
+    if @friend.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
-      @friend = Friend.find(params[:id])
+      @friend = Friend.find_by(user1_id: params[:user1_id], user2_id: params[:user2_id])
     end
 
     # Only allow a list of trusted parameters through.
-    def friend_params
-      params.require(:friend).permit(:user1, :user2_id, :accpeted)
-    end
+    # def friend_params
+    #   params.require(:friend).permit(:user1_id, :user2_id, :accepted)
+    # end
 end
+

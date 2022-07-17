@@ -3,9 +3,9 @@
 one:
   user1: 
   user2: one
-  accpeted: false
+  accepted: false
 
 two:
   user1: 
   user2: two
-  accpeted: false
+  accepted: false
