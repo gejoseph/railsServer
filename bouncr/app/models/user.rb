@@ -24,4 +24,5 @@ class User < ApplicationRecord
     scope :initiated_friendship , ->(user_id, accepted) {joins(:recievedFriendships).where('friends.user1_id = ? AND friends.accepted = ?',user_id, accepted)}
     scope :recieved_friendship , ->(user_id, accepted) {joins(:initiatedFriendships).where('friends.user2_id = ? AND friends.accepted = ?',user_id, accepted)}
     
+    
 end

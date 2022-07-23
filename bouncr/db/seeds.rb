@@ -114,7 +114,8 @@ john    = User.create(  username: "johnd",
                         phoneNumber: 3213214321,
                         birthday: DateTime.new(2000, 07, 10),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: false)
 kenny   = User.create(  username: "khu",
                         email: "kenny@andrew.cmu.edu",
                         firstName: "Kenny",
@@ -122,7 +123,8 @@ kenny   = User.create(  username: "khu",
                         phoneNumber: 1231231234,
                         birthday: DateTime.new(1999, 6, 7),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: true)
 grace   = User.create(  username: "gjoseph",
                         email: "grace@andrew.cmu.edu",
                         firstName: "Grace",
@@ -130,7 +132,8 @@ grace   = User.create(  username: "gjoseph",
                         phoneNumber: 4121231234,
                         birthday: DateTime.new(2000, 4, 9),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: true)
 sara    = User.create(  username: "ssong",
                         email: "sara@andrew.cmu.edu",
                         firstName: "Sara",
@@ -138,7 +141,8 @@ sara    = User.create(  username: "ssong",
                         phoneNumber: 6171231234,
                         birthday: DateTime.new(2001, 6, 24),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: true)
 shane   = User.create(  username: "saung",
                         email: "shane@andrew.cmu.edu",
                         firstName: "Shane",
@@ -146,7 +150,8 @@ shane   = User.create(  username: "saung",
                         phoneNumber: 4123214321,
                         birthday: DateTime.new(1999, 11, 18),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: false)
 profh   = User.create(  username: "profh",
                         email: "profh@cmu.edu",
                         firstName: "Prof",
@@ -154,7 +159,8 @@ profh   = User.create(  username: "profh",
                         phoneNumber: 4120980987,
                         birthday: DateTime.new(1980, 10, 31),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: true)
 max     = User.create(  username: "msergent",
                         email: "max@yahoo.com",
                         firstName: "Max",
@@ -162,7 +168,8 @@ max     = User.create(  username: "msergent",
                         phoneNumber: 5111232345,
                         birthday: DateTime.new(1986, 12, 2),
                         password: "secret",
-                        password_confirmation: "secret")
+                        password_confirmation: "secret",
+                        is_admin: false)
 
                         
 # Organizations ================================================================

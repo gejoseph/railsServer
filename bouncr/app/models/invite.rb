@@ -14,4 +14,7 @@ class Invite < ApplicationRecord
   #   self.inviteStatus = false
   #   self.coverChargePaid = 0.0
   # end
+  def self.is_a_guest(event_id,user_id)
+    (Invite.where(:user_id => user_id, :event_id => event_id)).length()>0
+  end
 end

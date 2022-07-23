@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
     before_action :authorized
-
+    include Pundit::Authorization
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
   def encode_token(payload)
     JWT.encode(payload, 'yourSecret')
   end
@@ -34,6 +36,24 @@ class ApplicationController < ActionController::API
   end
 
   def authorized
-    render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+    render json: {returnValue: -2,
+      returnString: "Invalid token"}, status: :unauthorized unless logged_in?
+  end
+
+  #return authorized user, this may securely replace authorized if you are using the authorization policy 
+  def current_user
+    loggedInUser = logged_in_user
+    if !loggedInUser
+      render json:{returnValue: -2,
+        returnString: "Invalid token"}
+    end
+    return loggedInUser
+  end
+
+  private
+
+  def user_not_authorized
+    render json:{returnValue: -5,
+      returnString: "Inproper permission"}
   end
 end

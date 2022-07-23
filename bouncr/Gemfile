@@ -56,3 +56,5 @@ gem 'fast_jsonapi'
 gem 'apipie-rails'
 
 gem 'blueprinter'
+
+gem 'pundit'
