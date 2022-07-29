@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
@@ -28,6 +28,16 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'simplecov'
+  gem 'hirb'
+  gem 'minitest-rails'
+  gem 'minitest-reporters'
+end
+
+group :test do
+  gem 'shoulda', '3.5.0'
+  gem 'shoulda-matchers', '2.8.0'
 end
 
 group :development do
@@ -41,5 +51,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'jwt'
+# Probably uninstall the 2 gems below
 gem 'fast_jsonapi'
 gem 'apipie-rails'
+
+gem 'blueprinter'

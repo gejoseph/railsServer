@@ -1,17 +1,17 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :update, :destroy]
   before_action :authorized
+  wrap_parameters format: [:json]
 
   # GET /organizations
   def index
     @organizations = Organization.all
-
-    render json: @organizations
+    render json: OrganizationBlueprint.render(@organizations)
   end
 
   # GET /organizations/1
   def show
-    render json: @organization
+    render json: OrganizationBlueprint.render(@organization)
   end
 
   # POST /organizations
@@ -19,24 +19,46 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
 
     if @organization.save
-      render json: @organization, status: :created, location: @organization
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @organization.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # PATCH/PUT /organizations/1
   def update
     if @organization.update(organization_params)
-      render json: @organization
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
     else
-      render json: @organization.errors, status: :unprocessable_entity
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
     end
   end
 
   # DELETE /organizations/1
   def destroy
-    @organization.destroy
+    if @organization.destroy
+      render json: {
+        returnValue: 0,
+        returnString: "success"
+      }
+    else
+      render json: {
+        returnValue: -1,
+        returnString: "failure"
+      }
+    end
   end
 
   private

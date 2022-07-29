@@ -6,8 +6,7 @@ class CreateInvites < ActiveRecord::Migration[6.1]
       t.datetime :checkinTime
       t.boolean :inviteStatus
       t.boolean :checkinStatus
-      t.integer :phoneNumber
-      t.integer :coverChargePaid
+      t.float :coverChargePaid
 
       t.timestamps
     end

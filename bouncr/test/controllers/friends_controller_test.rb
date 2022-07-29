@@ -12,7 +12,7 @@ class FriendsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create friend" do
     assert_difference('Friend.count') do
-      post friends_url, params: { friend: { accpeted: @friend.accpeted, user1: @friend.user1, user2_id: @friend.user2_id } }, as: :json
+      post friends_url, params: { friend: { accepted: @friend.accepted, user1: @friend.user1, user2_id: @friend.user2_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class FriendsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update friend" do
-    patch friend_url(@friend), params: { friend: { accpeted: @friend.accpeted, user1: @friend.user1, user2_id: @friend.user2_id } }, as: :json
+    patch friend_url(@friend), params: { friend: { accepted: @friend.accepted, user1: @friend.user1, user2_id: @friend.user2_id } }, as: :json
     assert_response 200
   end
 
