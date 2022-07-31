@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event_and_authorize, only: [:show, :update, :destroy]
+  before_action :set_user_and_authorize, only: [:host_events, :create_with_host]
   before_action :authorized
   wrap_parameters format: [:json]
 
   # GET /events
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
     render json: EventBlueprint.render(@events, view: :normal)
   end
 
@@ -24,7 +25,6 @@ class EventsController < ApplicationController
   # POST /events
   def create_with_host
     @event = Event.new(event_params)
-
     if @event.save
       if Host.create(user: User.find(params[:id]), event: @event)
         render json: EventBlueprint.render(@event, view: :show)
@@ -40,7 +40,6 @@ class EventsController < ApplicationController
         returnValue: -1,
         returnString: "unable to create event"
       }
-      #render json: @event.errors, status: :unprocessable_entity
     end
   end
 
@@ -54,7 +53,6 @@ class EventsController < ApplicationController
         returnValue: -1,
         returnString: "failure"
       }
-      # render json: @event.errors, status: :unprocessable_entity
     end
   end
 
@@ -77,6 +75,7 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+      authorize @event
     end
 
     # Only allow a list of trusted parameters through.

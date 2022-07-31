@@ -8,14 +8,7 @@ class Friend < ApplicationRecord
 
   #Methods
   def is_involved(user_id)
-    puts "id1: #{user_id}"
-    puts "id1: #{@user1}"
-    puts "id2: #{@user2}"
-    puts "id1: #{@user1_id}"
-    puts "id2: #{@user2_id}"
-    puts "id: #{@id}"
-    puts "accepted: #{@accepted}"
-    @user1_id == user_id or @user2_id == user_id
+    self.user1_id == user_id or self.user2_id == user_id
   end
   
 end

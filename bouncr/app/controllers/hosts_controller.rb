@@ -5,7 +5,7 @@ class HostsController < ApplicationController
 
   # GET /hosts
   def index
-    @hosts = Host.all
+    @hosts = olicy_scope(Host)
     render json: HostBlueprint.render(@hosts)
   end
 

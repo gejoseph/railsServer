@@ -5,16 +5,32 @@ class UserPolicy < ApplicationPolicy
     end
 
     def show?
-      user.is_admin? or record.id==user.id
+      is_admin_or_self?
     end 
 
     def index_friends?
-      user.is_admin? or record.id==user.id
+      is_admin_or_self?
     end 
 
     def index_friend_requests?
-      user.is_admin? or record.id==user.id
+      is_admin_or_self?
     end 
+
+    def create_with_host?
+      is_admin_or_self?
+    end
+
+    def host_events?
+      is_admin_or_self?
+    end
+
+    def guest_invites?
+      is_admin_or_self?
+    end
+
+    def is_admin_or_self?
+      user.is_admin? or record.id==user.id
+    end
 
     class Scope < Scope
       def resolve

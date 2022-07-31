@@ -136,16 +136,6 @@ class UsersController < ApplicationController
   end
 
   private
-  #set the user based on the ID, also ensures that 
-    def set_user_and_authorize
-      @user_target = User.find(params[:id])
-      authorize @user_target
-    end
-
-    def set_event_and_authorize
-      @target_event = Event.find(params[:id])
-      authorize @target_event
-    end
 
     def user_params
       params.permit(:username, :password, :email, :firstName, :lastName, :phoneNumber, :birthday)

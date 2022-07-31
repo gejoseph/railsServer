@@ -50,6 +50,17 @@ class ApplicationController < ActionController::API
     return loggedInUser
   end
 
+    #set the user based on the ID, also ensures that 
+    def set_user_and_authorize
+      @user_target = User.find(params[:id])
+      authorize @user_target
+    end
+
+    def set_event_and_authorize
+      @target_event = Event.find(params[:id])
+      authorize @target_event
+    end
+
   private
 
   def user_not_authorized
