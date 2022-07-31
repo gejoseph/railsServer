@@ -6,7 +6,8 @@ class Invite < ApplicationRecord
   #Scope
   scope :by_user, -> (user_id) { where('user_id = ?',user_id) }
   scope :by_event, -> (event_id) { where('event_id = ?',event_id) }
-  scope :checkedIn, -> { where('checkinStatus = ?',true) }
+  scope :checkedIn, -> {where('checkinTime IS NOT NULL')}
+  scope :accepted, -> { where('inviteStatus = ?',true) }
 
   #set default values 
   # def init
