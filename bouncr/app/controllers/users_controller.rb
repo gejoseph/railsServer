@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :authorized, only: [:auto_login, :destroy, :index_for_search]
+  before_action :authorized, only: [:auto_login]
   before_action :set_user_and_authorize, only: [:show, :update, :destroy, :index_friends, :index_friend_requests]
   before_action :set_event_and_authorize, only: [:event_guests, :event_hosts]
   wrap_parameters format: [:json]
+  after_action :verify_authorized, except: [:index, :create, :index_for_search]
+  after_action :verify_policy_scoped, only: :index
 
   # REGISTER
   # POST /users

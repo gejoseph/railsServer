@@ -1,6 +1,8 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :update, :destroy]
-  before_action :authorized, only: [:index]
+  #before_action :authorized, only: [:index]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   wrap_parameters format: [:json]
 
   # GET /friends

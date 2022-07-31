@@ -142,7 +142,7 @@ sara    = User.create(  username: "ssong",
                         birthday: DateTime.new(2001, 6, 24),
                         password: "secret",
                         password_confirmation: "secret",
-                        is_admin: true)
+                        is_admin: false)
 shane   = User.create(  username: "saung",
                         email: "shane@andrew.cmu.edu",
                         firstName: "Shane",
@@ -223,6 +223,8 @@ grace_shane    = Friend.create(user1: grace, user2: shane, accepted: true)
 profh_dance_party  = Host.create(user: profh, event: dance_party)
 sara_art_night     = Host.create(user: sara, event: art_night)
 sara_charity_event = Host.create(user: sara, event: charity_event)
+sara_kapsig_party = Host.create(user: sara, event: kapsig_party)
+sara_dance_party = Host.create(user: sara, event: dance_party)
 john_signu_party   = Host.create(user: john, event: signu_party)
 max_kapsig_party   = Host.create(user: max, event: kapsig_party)
 shane_coffee_chat  = Host.create(user: shane, event: coffee_chat)

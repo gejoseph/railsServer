@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-    before_action :authorized
+    #before_action :authorized
     include Pundit::Authorization
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   

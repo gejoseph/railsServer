@@ -1,7 +1,9 @@
 class InvitesController < ApplicationController
   before_action :set_invite_and_authorize, only: [:show, :update, :destroy]
   before_action :set_user_and_authorize, only: [:guest_invites]
-  before_action :authorized
+  #before_action :authorized
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   wrap_parameters format: [:json]
 
   # GET /invites

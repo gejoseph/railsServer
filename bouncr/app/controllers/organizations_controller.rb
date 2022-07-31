@@ -2,6 +2,8 @@ class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :update, :destroy]
   before_action :authorized
   wrap_parameters format: [:json]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
 
   # GET /organizations
   def index
