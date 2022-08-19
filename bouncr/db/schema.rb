@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_17_201714) do
+ActiveRecord::Schema.define(version: 2022_07_23_172923) do
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2022_04_17_201714) do
     t.datetime "birthday"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_admin"
   end
 
   add_foreign_key "friends", "users", column: "user1_id"

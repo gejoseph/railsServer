@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :authorized, only: [:auto_login, :destroy,:update]
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authorized, only: [:auto_login]
+  before_action :set_user_and_authorize, only: [:show, :update, :destroy, :index_friends, :index_friend_requests]
+  before_action :set_event_and_authorize, only: [:event_guests, :event_hosts]
   wrap_parameters format: [:json]
+  after_action :verify_authorized, except: [:index, :create, :index_for_search, :login]
+  after_action :verify_policy_scoped, only: :index
 
   # REGISTER
   # POST /users
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
-    render json: UserBlueprint.render(@user, view: :normal)
+    render json: UserBlueprint.render(@user_target, view: :normal)
   end
 
   # GET /event_hosts/:id
@@ -67,7 +70,7 @@ class UsersController < ApplicationController
     render json: UserBlueprint.render(@users, view: :other_user)
   end
 
-  # GET /user_friends
+  # GET /user_friend_requests
   def index_friend_requests
     @users = []
     if params[:sent_by_me].to_s.downcase == "true"
@@ -80,9 +83,9 @@ class UsersController < ApplicationController
 
   # PUT /users/:id
   def update
-    if @user.update(user_params)
-      token = encode_token({user_id: @user.id})
-      render json: UserBlueprint.render(@user, view: :login, token: token)
+    if @user_target.update(user_params)
+      token = encode_token({user_id: @user_target.id})
+      render json: UserBlueprint.render(@user_target, view: :login, token: token)
     else
       render json: {
         returnValue: -1,
@@ -92,8 +95,9 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/:id
+  #we currently do not allow it at all
   def destroy
-    if @user.destroy
+    if @user_target.destroy
       render json: {
         returnValue: 0,
         returnString: "success"
@@ -108,7 +112,8 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    #we only allow admins to index
+    @users = policy_scope(User)
     render json: UserBlueprint.render(@users, view: :normal)
   end
 
@@ -133,9 +138,6 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
     def user_params
       params.permit(:username, :password, :email, :firstName, :lastName, :phoneNumber, :birthday)

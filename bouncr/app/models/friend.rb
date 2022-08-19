@@ -7,5 +7,8 @@ class Friend < ApplicationRecord
   scope :by_user, -> (user_id) { where('user1_id = ? OR user2_id = ?',user_id,user_id) }
 
   #Methods
+  def is_involved(user_id)
+    self.user1_id == user_id or self.user2_id == user_id
+  end
   
 end

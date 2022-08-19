@@ -16,7 +16,7 @@ class EventBlueprint < Blueprinter::Base
     field :acceptedInvitesCount do |event, options|
       event.invites.accepted.count
     end
-    field :checkedInInvitescount do |event, options|
+    field :checkedInInvitesCount do |event, options|
       event.invites.checkedIn.count
     end
   end

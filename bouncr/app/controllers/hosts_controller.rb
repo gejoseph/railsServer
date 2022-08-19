@@ -1,11 +1,13 @@
 class HostsController < ApplicationController
   before_action :set_host, only: [:show, :update, :destroy]
-  before_action :authorized
+  #before_action :authorized
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   wrap_parameters format: [:json]
 
   # GET /hosts
   def index
-    @hosts = Host.all
+    @hosts = policy_scope(Host)
     render json: HostBlueprint.render(@hosts)
   end
 

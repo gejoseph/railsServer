@@ -1,11 +1,13 @@
 class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :update, :destroy]
-  before_action :authorized
+  #before_action :authorized, only: [:index]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   wrap_parameters format: [:json]
 
   # GET /friends
   def index
-    @friends = Friend.all
+    @friends = policy_scope(Friend)
     render json: FriendBlueprint.render(@friends)
   end
 
@@ -16,8 +18,8 @@ class FriendsController < ApplicationController
 
   # POST /friends
   def create
-    #@friend = Friend.new(friend_params)
     @friend = Friend.new(user1_id: params[:user1_id], user2_id: params[:user2_id], accepted: false)
+    authorize @friend
     if @friend.save
       render json: {
         returnValue: 0,
@@ -65,6 +67,7 @@ class FriendsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
       @friend = Friend.find_by(user1_id: params[:user1_id], user2_id: params[:user2_id])
+      authorize @friend
     end
 
     # Only allow a list of trusted parameters through.

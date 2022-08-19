@@ -1,11 +1,14 @@
 class InvitesController < ApplicationController
-  before_action :set_invite, only: [:show, :update, :destroy]
-  before_action :authorized
+  before_action :set_invite_and_authorize, only: [:show, :update, :destroy]
+  before_action :set_user_and_authorize, only: [:guest_invites]
+  #before_action :authorized
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
   wrap_parameters format: [:json]
 
   # GET /invites
   def index
-    @invites = Invite.all
+    @invites = policy_scope(Invite)
     render json: InviteBlueprint.render(@invites, view: :normal)
   end
 
@@ -24,7 +27,7 @@ class InvitesController < ApplicationController
   # POST /invites
   def create
     @invite = Invite.new(invite_params)
-
+    authorize @invite
     if @invite.save
       render json: InviteBlueprint.render(@invite, view: :normal)
     else
@@ -64,9 +67,11 @@ class InvitesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invite
+
+  # Use callbacks to share common setup or constraints between actions.
+    def set_invite_and_authorize
       @invite = Invite.find(params[:id])
+      authorize @invite
     end
 
     # Only allow a list of trusted parameters through.
